@@ -22,12 +22,20 @@ type Workout = {
 };
 
 // ✅ Fetch workouts from your API
-async function getWorkouts(): Promise<Workout[]> {
+async function getWorkouts() {
   const res = await fetch("http://localhost:3000/api/workouts", {
-    cache: "no-store", // always fetch fresh data
+    cache: "no-store",
   });
 
-  return res.json();
+  if (!res.ok) {
+    return [];
+  }
+
+  const text = await res.text();
+
+  if (!text) return [];
+
+  return JSON.parse(text);
 }
 
 // ✅ Page Component

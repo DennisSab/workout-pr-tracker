@@ -14,11 +14,20 @@ type SetType = {
 
 export default function NewWorkoutPage() {
   const [notes, setNotes] = useState("");
-  const [exerciseId, setExerciseId] = useState("");
   const [exercises, setExercises] = useState<Exercise[]>([]);
-  const [sets, setSets] = useState<SetType[]>([
-    { weight: "", reps: "" },
+  
+  type ExerciseBlock = {
+  exerciseId: string;
+  sets: SetType[];
+};
+
+  const [exercisesData, setExercisesData] = useState<ExerciseBlock[]>([
+    {
+      exerciseId: "",
+      sets: [{ weight: "", reps: "" }],
+    },
   ]);
+
 
   // ✅ Fetch exercises
   useEffect(() => {
@@ -31,9 +40,20 @@ export default function NewWorkoutPage() {
     fetchExercises();
   }, []);
 
-  // ✅ Add new set
-  function addSet() {
-    setSets([...sets, { weight: "", reps: "" }]);
+  function addExercise() {
+    setExercisesData([
+      ...exercisesData,
+      {
+        exerciseId: "",
+        sets: [{ weight: "", reps: "" }],
+      },
+    ]);
+  }
+
+  function addSet(exIndex: number) {
+    const updated = [...exercisesData];
+    updated[exIndex].sets.push({ weight: "", reps: "" });
+    setExercisesData(updated);
   }
 
   // ✅ Submit workout
@@ -47,11 +67,13 @@ export default function NewWorkoutPage() {
       },
       body: JSON.stringify({
         notes,
-        exerciseId,
-        sets: sets.map((s, index) => ({
-          weight: Number(s.weight),
-          reps: Number(s.reps),
-          setNumber: index + 1,
+        exercises: exercisesData.map((ex) => ({
+          exerciseId: ex.exerciseId,
+          sets: ex.sets.map((s, index) => ({
+            weight: Number(s.weight),
+            reps: Number(s.reps),
+            setNumber: index + 1,
+          })),
         })),
       }),
     });
@@ -74,57 +96,103 @@ export default function NewWorkoutPage() {
           className="w-full px-3 py-2 rounded bg-gray-700"
         />
 
-        {/* ✅ Exercise Select */}
-        <select
-          value={exerciseId}
-          onChange={(e) => setExerciseId(e.target.value)}
-          className="w-full px-3 py-2 rounded bg-gray-700"
-        >
-          <option value="">Select Exercise</option>
-          {exercises.map((ex) => (
-            <option key={ex.id} value={ex.id}>
-              {ex.name}
-            </option>
-          ))}
-        </select>
+        
+        {exercisesData.map((exerciseBlock, exIndex) => (
+          <div key={exIndex} className="bg-gray-800 p-4 rounded space-y-3">
 
-        {/* ✅ Sets UI */}
-        <div className="space-y-2">
-          {sets.map((set, index) => (
-            <div key={index} className="flex gap-2">
-              <input
-                placeholder="Weight"
-                value={set.weight}
-                onChange={(e) => {
-                  const newSets = [...sets];
-                  newSets[index].weight = e.target.value;
-                  setSets(newSets);
-                }}
-                className="w-1/2 px-2 py-1 bg-gray-700 rounded"
-              />
+            {/* ✅ Exercise Select */}
+            <select
+              value={exerciseBlock.exerciseId}
+              onChange={(e) => {
+                const updated = [...exercisesData];
+                updated[exIndex].exerciseId = e.target.value;
+                setExercisesData(updated);
+              }}
+              className="w-full px-3 py-2 rounded bg-gray-700"
+            >
+              <option value="">Select Exercise</option>
+              {exercises.map((ex) => (
+                <option key={ex.id} value={ex.id}>
+                  {ex.name}
+                </option>
+              ))}
+            </select>
+            
+            {/* ✅ REMOVE EXERCISE BUTTON */}
+            <button
+              type="button"
+              onClick={() => {
+                const updated = [...exercisesData];
+                updated.splice(exIndex, 1);
+                setExercisesData(updated);
+              }}
+              className="text-red-400 text-sm"
+            >
+              Remove Exercise
+            </button>
 
-              <input
-                placeholder="Reps"
-                value={set.reps}
-                onChange={(e) => {
-                  const newSets = [...sets];
-                  newSets[index].reps = e.target.value;
-                  setSets(newSets);
-                }}
-                className="w-1/2 px-2 py-1 bg-gray-700 rounded"
-              />
-            </div>
-          ))}
-        </div>
 
-        {/* ✅ Add Set Button */}
+            {/* ✅ Sets */}
+            {exerciseBlock.sets.map((set, setIndex) => (
+              <div key={setIndex} className="flex gap-2 items-center">
+                
+                <input
+                  placeholder="Weight"
+                  value={set.weight}
+                  onChange={(e) => {
+                    const updated = [...exercisesData];
+                    updated[exIndex].sets[setIndex].weight = e.target.value;
+                    setExercisesData(updated);
+                  }}
+                  className="w-1/2 px-2 py-1 bg-gray-700 rounded"
+                />
+
+                <input
+                  placeholder="Reps"
+                  value={set.reps}
+                  onChange={(e) => {
+                    const updated = [...exercisesData];
+                    updated[exIndex].sets[setIndex].reps = e.target.value;
+                    setExercisesData(updated);
+                  }}
+                  className="w-1/2 px-2 py-1 bg-gray-700 rounded"
+                />
+
+                {/* ✅ REMOVE SET BUTTON */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const updated = [...exercisesData];
+                    updated[exIndex].sets.splice(setIndex, 1);
+                    setExercisesData(updated);
+                  }}
+                  className="text-red-400 text-sm"
+                >
+                  ✕
+                </button>
+
+              </div>
+            ))}
+
+            {/* ✅ Add Set */}
+            <button
+              type="button"
+              onClick={() => addSet(exIndex)}
+              className="text-sm text-blue-400"
+            >
+              + Add Set
+            </button>
+          </div>
+        ))}
+
+        {/* ✅ Add Exercise */}
         <button
           type="button"
-          onClick={addSet}
-          className="text-sm text-blue-400"
+          onClick={addExercise}
+          className="text-green-400"
         >
-          + Add Set
-        </button>
+          + Add Exercise
+        </button>   
 
         {/* ✅ Submit */}
         <button className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg">

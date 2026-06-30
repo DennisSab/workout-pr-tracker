@@ -25,7 +25,7 @@ export async function GET() {
 export async function POST(req: Request) {
   const body = await req.json();
 
-  const { notes, exerciseId, sets } = body;
+  const { notes, exercises } = body;
 
   const user = await prisma.user.findFirst();
 
@@ -37,16 +37,18 @@ export async function POST(req: Request) {
     },
   });
 
-  // ✅ Create sets linked to workout + exercise
-  await prisma.workoutSet.createMany({
-    data: sets.map((set: SetInput, index: number) => ({
-      workoutId: workout.id,
-      exerciseId: exerciseId,
-      setNumber: index + 1,
-      reps: set.reps,
-      weight: set.weight,
-    })),
-  });
+  // ✅ Loop through each exercise
+  for (const exerciseBlock of exercises) {
+    await prisma.workoutSet.createMany({
+      data: exerciseBlock.sets.map((set: any) => ({
+        workoutId: workout.id,
+        exerciseId: exerciseBlock.exerciseId,
+        setNumber: set.setNumber,
+        reps: set.reps,
+        weight: set.weight,
+      })),
+    });
+  }
 
   return NextResponse.json({ success: true });
 }

@@ -178,7 +178,7 @@ export default function NewWorkoutPage() {
             <button
               type="button"
               onClick={() => addSet(exIndex)}
-              className="text-sm text-blue-400"
+              className="w-full py-2 bg-blue-600 rounded-lg text-white text-lg"
             >
               + Add Set
             </button>
@@ -189,13 +189,13 @@ export default function NewWorkoutPage() {
         <button
           type="button"
           onClick={addExercise}
-          className="text-green-400"
+          className="w-full py-2 bg-green-600 rounded-lg text-white text-lg"
         >
           + Add Exercise
         </button>   
 
         {/* ✅ Submit */}
-        <button className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg">
+        <button className="w-full py-3 bg-green-700 hover:bg-green-600 rounded-lg text-lg font-semibold">
           Save Workout
         </button>
       </form>

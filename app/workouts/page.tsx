@@ -41,6 +41,19 @@ async function getWorkouts(): Promise<Workout[]> {
 export default async function WorkoutsPage() {
   const workouts = await getWorkouts();
 
+  // ✅ GLOBAL PR MAP (ALL WORKOUTS)
+  const globalPR: Record<string, number> = {};
+
+  workouts.forEach((workout) => {
+    workout.sets.forEach((set) => {
+      const name = set.exercise.name;
+
+      if (!globalPR[name] || set.weight > globalPR[name]) {
+        globalPR[name] = set.weight;
+      }
+    });
+  });
+
   return (
     <main className="p-6 text-white bg-gray-900 min-h-screen">
       <h1 className="text-3xl font-bold mb-6">Workout History</h1>
@@ -88,17 +101,27 @@ export default async function WorkoutsPage() {
                     {/* Exercise Title */}
                     <h3 className="font-semibold text-lg">
                       {exerciseName}
+                      <span className="ml-2 text-green-400 text-sm">
+                        PR: {globalPR[exerciseName]}kg
+                      </span>
                     </h3>
 
                     {/* Sets */}
-                    {sets.map((set,index) => (
+                    {sets.map((set, index) => {
+                    const isPR = set.weight === globalPR[exerciseName];
+
+                    return (
                       <div key={set.id} className="ml-4">
-                        <p>
-                          <span className="text-gray-400">Set {index + 1}:</span>{" "}
+                        <p className={isPR ? "text-green-400 font-bold" : ""}>
+                          <span className="text-gray-400">
+                            Set {index + 1}:
+                          </span>{" "}
                           {set.weight}kg x {set.reps}
+                          {isPR && " 💥"}
                         </p>
                       </div>
-                    ))}
+                    );
+                  })}
 
                   </div>
                 ))}

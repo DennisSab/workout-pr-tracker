@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic"; // Ensure the route is treated as dynamic
+export const revalidate = 0;
 
 // ✅ GET ALL WORKOUTS
 export async function GET() {

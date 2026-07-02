@@ -1,3 +1,4 @@
+import Navbar from "@/components/ui/Navbar";
 import prisma from "@/lib/prisma";  
 
 export const dynamic = "force-dynamic";
@@ -62,22 +63,25 @@ export default async function ProgressPage() {
   });
 
   return (
-    <main className="p-6 text-white bg-gray-900 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">Progress</h1>
+    <>
+    <Navbar />
+      <main className="p-6 text-white bg-gray-900 min-h-screen">
+        <h1 className="text-3xl font-bold mb-6">Progress</h1>
 
-      <div className="space-y-4">
-        {Object.entries(exercisePR).map(([name, weight]) => (
-          <div
-            key={name}
-            className="bg-gray-800 p-4 rounded-lg flex justify-between"
-          >
-            <span>{name}</span>
-            <span className="text-green-400 font-bold">
-              {weight}kg
-            </span>
-          </div>
-        ))}
-      </div>
-    </main>
+        <div className="space-y-4">
+          {Object.entries(exercisePR).map(([name, weight]) => (
+            <div
+              key={name}
+              className="bg-gray-800 p-4 rounded-lg flex justify-between"
+            >
+              <span>{name}</span>
+              <span className="text-green-400 font-bold">
+                {weight}kg
+              </span>
+            </div>
+          ))}
+        </div>
+      </main>
+    </>
   );
 }

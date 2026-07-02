@@ -1,4 +1,5 @@
 import Link from "next/link";
+import prisma from "@/lib/prisma";
 
 type Exercise = {
   id: string;
@@ -17,24 +18,33 @@ type WorkoutSet = {
 type Workout = {
   id: string;
   date: string;
-  notes: string;
+  notes: string | null;
   sets: WorkoutSet[];
 };
 
 // ✅ Fetch workouts from your API
 async function getWorkouts(): Promise<Workout[]> {
-  const res = await fetch("/api/workouts", {
-    cache: "no-store",
+  const workouts = await prisma.workout.findMany({
+    include: {
+      sets: {
+        include: {
+          exercise: true,
+        },
+        orderBy: {
+          setNumber: "asc",
+        },
+      },
+    },
+    orderBy: {
+      date: "desc",
+    },
   });
 
-  if (!res.ok) {
-    return [];
-  }
-
-  const text = await res.text();
-  if (!text) return [];
-
-  return JSON.parse(text);
+  return workouts.map((workout) => ({
+    ...workout,
+    date: workout.date.toISOString(),
+    notes: workout.notes ?? "",
+  }));
 }
 
 // ✅ Page Component

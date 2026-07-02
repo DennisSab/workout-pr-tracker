@@ -1,3 +1,6 @@
+import prisma from "@/lib/prisma";  
+
+
 type Exercise = {
   id: string;
   name: string;
@@ -18,13 +21,27 @@ type Workout = {
 
 // ✅ Fetch workouts
 async function getWorkouts(): Promise<Workout[]> {
-  const res = await fetch("/api/workouts", {
-    cache: "no-store",
+  const workouts = await prisma.workout.findMany({
+    include: {
+      sets: {
+        include: {
+          exercise: true,
+        },
+        orderBy: {
+          setNumber: "asc",
+        },
+      },
+    },
+    orderBy: {
+      date: "desc",
+    },
   });
 
-  if (!res.ok) return [];
-
-  return res.json();
+  return workouts.map((workout) => ({
+    ...workout,
+    date: workout.date.toISOString(),
+    notes: workout.notes ?? "",
+  }));
 }
 
 export default async function ProgressPage() {

@@ -23,7 +23,7 @@ type Workout = {
 
 // ✅ Fetch workouts from your API
 async function getWorkouts(): Promise<Workout[]> {
-  const res = await fetch("http://localhost:3000/api/workouts", {
+  const res = await fetch("/api/workouts", {
     cache: "no-store",
   });
 

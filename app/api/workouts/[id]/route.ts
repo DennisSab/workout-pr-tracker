@@ -5,22 +5,25 @@ export async function POST(
   req: Request,
   context: { params: Promise<{ id: string }> }
 ) {
-  // ✅ FIX: await params
   const { id } = await context.params;
 
-  // ✅ Delete related sets first
-  await prisma.workoutSet.deleteMany({
-    where: {
-      workoutId: id,
-    },
-  });
+  try {
+    await prisma.workoutSet.deleteMany({
+      where: {
+        workoutId: id,
+      },
+    });
 
-  // ✅ Then delete workout
-  await prisma.workout.delete({
-    where: {
-      id,
-    },
-  });
+    await prisma.workout.delete({
+      where: {
+        id,
+      },
+    });
 
-  return NextResponse.redirect("http://localhost:3000/workouts");
+    return NextResponse.redirect(new URL("/workouts", req.url));
+  } catch (error) {
+    console.error("Delete workout failed:", error);
+
+    return NextResponse.redirect(new URL("/workouts", req.url));
+  }
 }

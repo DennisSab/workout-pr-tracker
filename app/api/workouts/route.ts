@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic"; // Ensure the route is treated as dynamic
+
 // ✅ GET ALL WORKOUTS
 export async function GET() {
   const workouts = await prisma.workout.findMany({

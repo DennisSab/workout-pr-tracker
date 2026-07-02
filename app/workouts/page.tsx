@@ -1,6 +1,11 @@
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 
+export const dynamic = "force-dynamic"; // Ensure the route is treated as dynamic
+export const revalidate = 0;
+export const fetchCache ="force-no-store"; // Ensure the route runs in the edge runtime
+
+
 type Exercise = {
   id: string;
   name: string;

@@ -19,23 +19,18 @@ export default function Home() {
           <h2 className="text-xl font-semibold">Quick Actions</h2>
 
           <div className="mt-5 flex flex-col gap-3">
-            <Link href="/workouts/new">
-              <Button className="w-full text-lg py-6">
-                Start New Workout
-              </Button>
+            <Link href="/workouts/new" className="block">
+              <Button>Start New Workout</Button>
             </Link>
 
-            <Link href="/workouts">
-              <Button className="w-full text-lg py-6">
-                Workout History
-              </Button>
+            <Link href="/workouts" className="block">
+              <Button>Workout History</Button>
+            </Link> 
+
+            <Link href="/progress" className="block">        
+              <Button>View Progress</Button>
             </Link>
 
-            <Link href="/progress">
-              <Button className="w-full text-lg py-6">
-                View Progress
-              </Button>
-            </Link>
           </div>
         </div>
 

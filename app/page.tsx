@@ -25,9 +25,9 @@ export default function Home() {
 
             <Link href="/workouts" className="block">
               <Button>Workout History</Button>
-            </Link> 
+            </Link>
 
-            <Link href="/progress" className="block">        
+            <Link href="/progress" className="block">
               <Button>View Progress</Button>
             </Link>
 

@@ -22,7 +22,7 @@ export async function GET() {
 // ✅ CREATE WORKOUT
 export async function POST(req: Request) {
   const body = await req.json();
-  const { notes, exercises } = body;
+  const { date,notes, exercises } = body;
 
   const user = await prisma.user.findFirst();
 
@@ -54,6 +54,7 @@ export async function POST(req: Request) {
     data: {
       userId: user.id,
       notes: notes || "No notes",
+      date: date ? new Date(`${date}T12:00:00`) : new Date(),
     },
   });
 

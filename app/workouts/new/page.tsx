@@ -15,6 +15,9 @@ type SetType = {
 
 export default function NewWorkoutPage() {
   const [notes, setNotes] = useState("");
+  const [date, setDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
   const [exercises, setExercises] = useState<Exercise[]>([]);
   
   type ExerciseBlock = {
@@ -67,6 +70,7 @@ export default function NewWorkoutPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        date,
         notes,
         exercises: exercisesData.map((ex) => ({
           exerciseId: ex.exerciseId,
@@ -91,6 +95,21 @@ export default function NewWorkoutPage() {
         <h1 className="text-3xl font-bold mb-6">Create Workout</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          
+          <div>
+            <label className="mb-2 block text-sm text-gray-400">
+              Workout Date
+            </label>
+
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full rounded bg-gray-700 px-3 py-2"
+            />
+          </div>
+          
+          
           {/* ✅ Notes */}
           <input
             value={notes}

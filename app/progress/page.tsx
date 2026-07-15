@@ -1,29 +1,30 @@
 import Navbar from "@/components/ui/Navbar";
-import prisma from "@/lib/prisma";  
+import prisma from "@/lib/prisma";
+import ExerciseCard from "@/components/ui/progress/ExerciseCard";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-type Exercise = {
-  id: string;
-  name: string;
-};
-
-type WorkoutSet = {
-  id: string;
+type Performance = {
   weight: number;
   reps: number;
-  exercise: Exercise;
+  date: Date;
 };
 
-type Workout = {
-  id: string;
-  date: string;
-  sets: WorkoutSet[];
+type ExerciseStats = {
+  exerciseId: string;
+  exerciseName: string;
+  personalRecord: number;
+  totalSets: number;
+  totalSessions: number;
+  totalVolume: number;
+  lastTrained: Date;
+  lastWorkout: Performance | null;
+  previousWorkout: Performance | null;
 };
 
-// ✅ Fetch workouts
-async function getWorkouts(): Promise<Workout[]> {
-  const workouts = await prisma.workout.findMany({
+async function getWorkouts() {
+  return prisma.workout.findMany({
     include: {
       sets: {
         include: {
@@ -38,48 +39,143 @@ async function getWorkouts(): Promise<Workout[]> {
       date: "desc",
     },
   });
-
-  return workouts.map((workout) => ({
-    ...workout,
-    date: workout.date.toISOString(),
-    notes: workout.notes ?? "",
-  }));
 }
 
-export default async function ProgressPage() {
-  const workouts = await getWorkouts();
-
-  // ✅ Build PR map (best weight ever per exercise)
-  const exercisePR: Record<string, number> = {};
+function buildExerciseStats(
+  workouts: Awaited<ReturnType<typeof getWorkouts>>
+): ExerciseStats[] {
+  const statsMap = new Map<string, ExerciseStats>();
 
   workouts.forEach((workout) => {
-    workout.sets.forEach((set) => {
-      const name = set.exercise.name;
+    const exercisesInSession = new Set<string>();
 
-      if (!exercisePR[name] || set.weight > exercisePR[name]) {
-        exercisePR[name] = set.weight;
+    workout.sets.forEach((set) => {
+      const exerciseId = set.exercise.id;
+      const currentStats = statsMap.get(exerciseId);
+
+      if (!currentStats) {
+        statsMap.set(exerciseId, {
+          exerciseId,
+          exerciseName: set.exercise.name,
+          personalRecord: set.weight,
+          totalSets: 1,
+          totalSessions: 0,
+          totalVolume: set.weight * set.reps,
+          lastTrained: workout.date,
+          lastWorkout: {
+            weight: set.weight,
+            reps: set.reps,
+            date: workout.date,
+          },
+          previousWorkout: null,
+        });
+      } else {
+        currentStats.personalRecord = Math.max(
+          currentStats.personalRecord,
+          set.weight
+        );
+
+        currentStats.totalSets += 1;
+        currentStats.totalVolume += set.weight * set.reps;
+
+        if (workout.date > currentStats.lastTrained) {
+          currentStats.lastTrained = workout.date;
+        }
+
+        const candidatePerformance: Performance = {
+          weight: set.weight,
+          reps: set.reps,
+          date: workout.date,
+        };
+
+        const workoutTime = workout.date.getTime();
+        const latestTime = currentStats.lastWorkout?.date.getTime();
+
+        if (!currentStats.lastWorkout || latestTime === undefined) {
+          currentStats.lastWorkout = candidatePerformance;
+        } else if (workoutTime > latestTime) {
+          currentStats.previousWorkout = currentStats.lastWorkout;
+          currentStats.lastWorkout = candidatePerformance;
+        } else if (workoutTime === latestTime) {
+          if (set.weight > currentStats.lastWorkout.weight) {
+            currentStats.lastWorkout = candidatePerformance;
+          }
+        } else {
+          const previousTime =
+            currentStats.previousWorkout?.date.getTime();
+
+          if (
+            !currentStats.previousWorkout ||
+            previousTime === undefined ||
+            workoutTime > previousTime
+          ) {
+            currentStats.previousWorkout = candidatePerformance;
+          } else if (
+            workoutTime === previousTime &&
+            set.weight > currentStats.previousWorkout.weight
+          ) {
+            currentStats.previousWorkout = candidatePerformance;
+          }
+        }
+      }
+
+      exercisesInSession.add(exerciseId);
+    });
+
+    exercisesInSession.forEach((exerciseId) => {
+      const exerciseStats = statsMap.get(exerciseId);
+
+      if (exerciseStats) {
+        exerciseStats.totalSessions += 1;
       }
     });
   });
 
+  return Array.from(statsMap.values()).sort(
+    (a, b) => b.lastTrained.getTime() - a.lastTrained.getTime()
+  );
+}
+
+export default async function ProgressPage() {
+  const workouts = await getWorkouts();
+  const exerciseStats = buildExerciseStats(workouts);
+
   return (
     <>
-    <Navbar />
-      <main className="p-6 text-white bg-gray-900 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6">Progress</h1>
+      <Navbar />
 
-        <div className="space-y-4">
-          {Object.entries(exercisePR).map(([name, weight]) => (
-            <div
-              key={name}
-              className="bg-gray-800 p-4 rounded-lg flex justify-between"
-            >
-              <span>{name}</span>
-              <span className="text-green-400 font-bold">
-                {weight}kg
-              </span>
+      <main className="min-h-screen bg-gray-900 p-6 text-white">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold">Progress</h1>
+
+            <p className="mt-2 text-gray-400">
+              Your exercise performance and training history.
+            </p>
+          </div>
+
+          {exerciseStats.length === 0 ? (
+            <div className="rounded-xl bg-gray-800 p-6 text-gray-400">
+              No workout data yet.
             </div>
-          ))}
+          ) : (
+            <div className="grid gap-4 md:grid-cols-2">
+              {exerciseStats.map((exercise) => (
+                <ExerciseCard
+                  key={exercise.exerciseId}
+                  exerciseId={exercise.exerciseId}
+                  exerciseName={exercise.exerciseName}
+                  personalRecord={exercise.personalRecord}
+                  totalVolume={exercise.totalVolume}
+                  totalSets={exercise.totalSets}
+                  totalSessions={exercise.totalSessions}
+                  lastTrained={exercise.lastTrained}
+                  lastWorkout={exercise.lastWorkout}
+                  previousWorkout={exercise.previousWorkout}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </>

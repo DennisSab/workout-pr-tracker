@@ -1,5 +1,11 @@
 import Navbar from "@/components/ui/Navbar";
+import ExerciseStatsGrid from "@/components/ui/exercise-details/ExerciseStatsGrid";
+import WorkoutHistoryList from "@/components/ui/exercise-details/WorkoutHistoryList";
 import prisma from "@/lib/prisma";
+import {
+  buildExerciseStats,
+  groupWorkoutHistory,
+} from "@/lib/exercise-details";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -25,11 +31,16 @@ export default async function ExercisePage({
         include: {
           workout: true,
         },
-        orderBy: {
-          workout: {
-            date: "desc",
+        orderBy: [
+          {
+            workout: {
+              date: "desc",
+            },
           },
-        },
+          {
+            setNumber: "asc",
+          },
+        ],
       },
     },
   });
@@ -37,6 +48,9 @@ export default async function ExercisePage({
   if (!exercise) {
     notFound();
   }
+
+  const stats = buildExerciseStats(exercise.sets);
+  const workoutHistory = groupWorkoutHistory(exercise.sets);
 
   return (
     <>
@@ -50,31 +64,14 @@ export default async function ExercisePage({
             {exercise.muscleGroup}
           </p>
 
+          <div className="mt-8">
+            <ExerciseStatsGrid stats={stats} />
+          </div>
+
           <div className="mt-8 rounded-2xl border border-gray-700 bg-gray-800 p-5">
             <h2 className="text-xl font-semibold">Workout History</h2>
 
-            {exercise.sets.length === 0 ? (
-              <p className="mt-4 text-gray-400">
-                No workout history for this exercise.
-              </p>
-            ) : (
-              <div className="mt-4 space-y-3">
-                {exercise.sets.map((set) => (
-                  <div
-                    key={set.id}
-                    className="rounded-xl bg-gray-700 p-4"
-                  >
-                    <p className="font-semibold">
-                      {set.weight} kg × {set.reps} reps
-                    </p>
-
-                    <p className="mt-1 text-sm text-gray-400">
-                      {set.workout.date.toLocaleDateString()}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
+            <WorkoutHistoryList workouts={workoutHistory} />
           </div>
         </div>
       </main>

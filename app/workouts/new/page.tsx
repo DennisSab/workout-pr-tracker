@@ -1,227 +1,36 @@
-"use client";
-
 import Navbar from "@/components/ui/Navbar";
-import { useState, useEffect } from "react";
+import WorkoutForm from "@/components/ui/workouts/WorkoutForm";
+import prisma from "@/lib/prisma";
 
-type Exercise = {
-  id: string;
-  name: string;
-};
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-type SetType = {
-  weight: string;
-  reps: string;
-};
-
-export default function NewWorkoutPage() {
-  const [notes, setNotes] = useState("");
-  const [date, setDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
-  const [exercises, setExercises] = useState<Exercise[]>([]);
-  
-  type ExerciseBlock = {
-  exerciseId: string;
-  sets: SetType[];
-};
-
-  const [exercisesData, setExercisesData] = useState<ExerciseBlock[]>([
-    {
-      exerciseId: "",
-      sets: [{ weight: "", reps: "" }],
+async function getExercises() {
+  return prisma.exercise.findMany({
+    orderBy: {
+      name: "asc",
     },
-  ]);
+  });
+}
 
-
-  // ✅ Fetch exercises
-  useEffect(() => {
-    async function fetchExercises() {
-      const res = await fetch("/api/exercises");
-      const data = await res.json();
-      setExercises(data);
-    }
-
-    fetchExercises();
-  }, []);
-
-  function addExercise() {
-    setExercisesData([
-      ...exercisesData,
-      {
-        exerciseId: "",
-        sets: [{ weight: "", reps: "" }],
-      },
-    ]);
-  }
-
-  function addSet(exIndex: number) {
-    const updated = [...exercisesData];
-    updated[exIndex].sets.push({ weight: "", reps: "" });
-    setExercisesData(updated);
-  }
-
-  // ✅ Submit workout
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-
-    const res = await fetch("/api/workouts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        date,
-        notes,
-        exercises: exercisesData.map((ex) => ({
-          exerciseId: ex.exerciseId,
-          sets: ex.sets.map((s, index) => ({
-            weight: Number(s.weight),
-            reps: Number(s.reps),
-            setNumber: index + 1,
-          })),
-        })),
-      }),
-    });
-
-    if (res.ok) {
-      window.location.href = "/workouts";
-    }
-  }
+export default async function NewWorkoutPage() {
+  const exercises = await getExercises();
 
   return (
     <>
-    <Navbar />
-      <main className="p-6 text-white bg-gray-900 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6">Create Workout</h1>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          
-          <div>
-            <label className="mb-2 block text-sm text-gray-400">
-              Workout Date
-            </label>
-
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="w-full rounded bg-gray-700 px-3 py-2"
-            />
-          </div>
-          
-          
-          {/* ✅ Notes */}
-          <input
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            placeholder="Workout notes"
-            className="w-full px-3 py-2 rounded bg-gray-700"
-          />
-
-          
-          {exercisesData.map((exerciseBlock, exIndex) => (
-            <div key={exIndex} className="bg-gray-800 p-4 rounded space-y-3">
-
-              {/* ✅ Exercise Select */}
-              <select
-                value={exerciseBlock.exerciseId}
-                onChange={(e) => {
-                  const updated = [...exercisesData];
-                  updated[exIndex].exerciseId = e.target.value;
-                  setExercisesData(updated);
-                }}
-                className="w-full px-3 py-2 rounded bg-gray-700"
-              >
-                <option value="">Select Exercise</option>
-                {exercises.map((ex) => (
-                  <option key={ex.id} value={ex.id}>
-                    {ex.name}
-                  </option>
-                ))}
-              </select>
-              
-              {/* ✅ REMOVE EXERCISE BUTTON */}
-              <button
-                type="button"
-                onClick={() => {
-                  const updated = [...exercisesData];
-                  updated.splice(exIndex, 1);
-                  setExercisesData(updated);
-                }}
-                className="text-red-400 text-sm"
-              >
-                Remove Exercise
-              </button>
-
-
-              {/* ✅ Sets */}
-              {exerciseBlock.sets.map((set, setIndex) => (
-                <div key={setIndex} className="flex gap-2 items-center">
-                  
-                  <input
-                    placeholder="Weight"
-                    value={set.weight}
-                    onChange={(e) => {
-                      const updated = [...exercisesData];
-                      updated[exIndex].sets[setIndex].weight = e.target.value;
-                      setExercisesData(updated);
-                    }}
-                    className="w-1/2 px-2 py-1 bg-gray-700 rounded"
-                  />
-
-                  <input
-                    placeholder="Reps"
-                    value={set.reps}
-                    onChange={(e) => {
-                      const updated = [...exercisesData];
-                      updated[exIndex].sets[setIndex].reps = e.target.value;
-                      setExercisesData(updated);
-                    }}
-                    className="w-1/2 px-2 py-1 bg-gray-700 rounded"
-                  />
-
-                  {/* ✅ REMOVE SET BUTTON */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const updated = [...exercisesData];
-                      updated[exIndex].sets.splice(setIndex, 1);
-                      setExercisesData(updated);
-                    }}
-                    className="text-red-400 text-sm"
-                  >
-                    ✕
-                  </button>
-
-                </div>
-              ))}
-
-              {/* ✅ Add Set */}
-              <button
-                type="button"
-                onClick={() => addSet(exIndex)}
-                className="w-full py-2 bg-blue-600 rounded-lg text-white text-lg"
-              >
-                + Add Set
-              </button>
-            </div>
-          ))}
-
-          {/* ✅ Add Exercise */}
-          <button
-            type="button"
-            onClick={addExercise}
-            className="w-full py-2 bg-green-600 rounded-lg text-white text-lg"
-          >
-            + Add Exercise
-          </button>   
-
-          {/* ✅ Submit */}
-          <button className="w-full py-3 bg-green-700 hover:bg-green-600 rounded-lg text-lg font-semibold">
-            Save Workout
-          </button>
-        </form>
-      </main>
+      <Navbar />
+      <WorkoutForm
+        mode="create"
+        exercises={exercises}
+        initialValues={{
+          date: new Date().toISOString().split("T")[0],
+          notes: "",
+          exercises: [{ exerciseId: "", sets: [{ weight: "", reps: "" }] }],
+        }}
+        title="Create Workout"
+        description="Log a workout with multiple exercises and sets."
+        submitLabel="Save Workout"
+      />
     </>
   );
 }

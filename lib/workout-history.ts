@@ -8,7 +8,7 @@ type WorkoutWithSets = {
     id: string;
     setNumber: number;
     reps: number;
-    weight: number;
+    weight: number | null;
     exercise: {
       id: string;
       name: string;
@@ -21,12 +21,12 @@ export type WorkoutExerciseGroup = {
   exerciseId: string;
   exerciseName: string;
   muscleGroup: string;
-  personalRecord: number;
+  personalRecord: number | null;
   sets: Array<{
     id: string;
     setNumber: number;
     reps: number;
-    weight: number;
+    weight: number | null;
     isPersonalRecord: boolean;
     performanceLabel: string;
   }>;
@@ -44,6 +44,7 @@ export function buildGlobalPersonalRecords(workouts: WorkoutWithSets[]) {
 
   workouts.forEach((workout) => {
     workout.sets.forEach((set) => {
+      if (set.weight === null) return;
       const currentRecord = personalRecords.get(set.exercise.id) ?? 0;
       personalRecords.set(
         set.exercise.id,
@@ -72,7 +73,7 @@ export function buildWorkoutHistory(
         setNumber: set.setNumber,
         reps: set.reps,
         weight: set.weight,
-        isPersonalRecord: set.weight === personalRecord,
+        isPersonalRecord: set.weight !== null && set.weight === personalRecord,
         performanceLabel: `${formatWeight(set.weight)} x ${set.reps}`,
       };
 

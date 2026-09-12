@@ -95,12 +95,14 @@ export default function WorkoutForm({
     exerciseIndex: number,
     setIndex: number,
     field: keyof WorkoutFormSet,
-    value: string
+    value: string | null
   ) {
     updateExercise(exerciseIndex, (exercise) => ({
       ...exercise,
       sets: exercise.sets.map((set, index) =>
-        index === setIndex ? { ...set, [field]: value } : set
+        index === setIndex
+          ? field === "weight" ? { ...set, weight: value } : { ...set, reps: value ?? "" }
+          : set
       ),
     }));
   }

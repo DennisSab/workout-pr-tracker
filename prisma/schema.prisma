@@ -33,7 +33,7 @@ model WorkoutSet {
   exerciseId  String
   setNumber   Int
   reps        Int
-  weight      Float
+  weight      Float?
 
   workout     Workout  @relation(fields: [workoutId], references: [id])
   exercise    Exercise @relation(fields: [exerciseId], references: [id])

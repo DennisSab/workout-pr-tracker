@@ -5,7 +5,7 @@ export type ExerciseOption = {
 };
 
 export type WorkoutFormSet = {
-  weight: string;
+  weight: string | null;
   reps: string;
 };
 
@@ -24,5 +24,5 @@ export type WorkoutSetInput = {
   exerciseId: string;
   setNumber: number;
   reps: number;
-  weight: number;
+  weight: number | null;
 };

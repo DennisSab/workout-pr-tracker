@@ -3,7 +3,7 @@ import PerformanceCard from "./PerformanceCard";
 import Link from "next/link";
 
 type Performance = {
-  weight: number;
+  weight: number | null;
   reps: number;
   date: Date;
 };
@@ -11,8 +11,8 @@ type Performance = {
 type ExerciseCardProps = {
   exerciseId: string;
   exerciseName: string;
-  personalRecord: number;
-  totalVolume: number;
+  personalRecord: number | null;
+  totalVolume: number | null;
   totalSets: number;
   totalSessions: number;
   lastTrained: Date;
@@ -32,7 +32,7 @@ export default function ExerciseCard({
   previousWorkout,
 }: ExerciseCardProps) {
   const performanceDifference =
-    lastWorkout && previousWorkout
+    lastWorkout && previousWorkout && lastWorkout.weight !== null && previousWorkout.weight !== null
       ? lastWorkout.weight - previousWorkout.weight
       : null;
 
@@ -46,13 +46,13 @@ export default function ExerciseCard({
       <div className="grid grid-cols-2 gap-3">
         <MetricCard
           label="Personal Record"
-          value={`${personalRecord} kg`}
+          value={personalRecord === null ? "—" : `${personalRecord} kg`}
           highlight
         />
 
         <MetricCard
           label="Total Volume"
-          value={`${totalVolume.toLocaleString()} kg`}
+          value={totalVolume === null ? "—" : `${totalVolume.toLocaleString()} kg`}
         />
 
         <MetricCard label="Total Sets" value={totalSets} />
@@ -79,8 +79,7 @@ export default function ExerciseCard({
       )}
 
       {previousWorkout &&
-        lastWorkout &&
-        performanceDifference !== null && (
+        lastWorkout && (
           <div className="mt-3">
             <PerformanceCard
               label="Previous Performance"

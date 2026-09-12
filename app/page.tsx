@@ -1,7 +1,20 @@
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
+import WorkoutCalendar from "@/components/ui/WorkoutCalendar";
+import prisma from "@/lib/prisma";
+import { getWorkoutCalendarRange } from "@/lib/workout-calendar";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function Home() {
+  const today = new Date();
+  const { start, endExclusive } = getWorkoutCalendarRange(today);
+  const workouts = await prisma.workout.findMany({
+    where: { date: { gte: start, lt: endExclusive } },
+    select: { date: true },
+  });
+
   return (
     <>
       <Navbar />
@@ -43,6 +56,8 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
+          <WorkoutCalendar dates={workouts.map((workout) => workout.date)} today={today} />
 
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-gray-900 p-4">

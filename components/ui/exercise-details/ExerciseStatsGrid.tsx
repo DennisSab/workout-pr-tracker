@@ -12,7 +12,7 @@ export default function ExerciseStatsGrid({
     <div className="grid grid-cols-2 gap-3">
       <MetricCard
         label="Personal Record"
-        value={`${stats.personalRecord} kg`}
+        value={stats.personalRecord === null ? "—" : `${stats.personalRecord} kg`}
         highlight
       />
 
@@ -22,7 +22,7 @@ export default function ExerciseStatsGrid({
 
       <MetricCard
         label="Total Volume"
-        value={`${stats.totalVolume.toLocaleString()} kg`}
+        value={stats.totalVolume === null ? "—" : `${stats.totalVolume.toLocaleString()} kg`}
       />
     </div>
   );

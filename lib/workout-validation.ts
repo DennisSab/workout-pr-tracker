@@ -39,6 +39,15 @@ function parsePositiveNumber(value: unknown) {
     : null;
 }
 
+// Only an explicit JSON null means bodyweight. Blank/missing/zero is invalid.
+export function parseSetValues(input: unknown): { reps: number; weight: number | null } | null {
+  if (!isRecord(input)) return null;
+  const reps = parsePositiveNumber(input.reps);
+  const weight = input.weight === null ? null : parsePositiveNumber(input.weight);
+  if (reps === null || !Number.isSafeInteger(reps) || (input.weight !== null && weight === null)) return null;
+  return { reps, weight };
+}
+
 export function parseWorkoutPayload(
   payload: unknown
 ): ValidationResult<ParsedWorkoutPayload> {
@@ -103,18 +112,15 @@ export function parseWorkoutPayload(
         continue;
       }
 
-      const weight = parsePositiveNumber(set.weight);
-      const reps = parsePositiveNumber(set.reps);
-
-      if (weight === null || reps === null) {
+      const values = parseSetValues(set);
+      if (!values) {
         continue;
       }
 
       sets.push({
         exerciseId,
         setNumber,
-        weight,
-        reps,
+        ...values,
       });
 
       setNumber += 1;
@@ -188,7 +194,7 @@ export function buildWorkoutFormValues(input: {
     exerciseId: string;
     setNumber: number;
     reps: number;
-    weight: number;
+    weight: number | null;
   }>;
 }): WorkoutFormValues {
   const exerciseMap = new Map<string, WorkoutFormValues["exercises"][number]>();
@@ -196,7 +202,7 @@ export function buildWorkoutFormValues(input: {
   input.sets.forEach((set) => {
     const existingExercise = exerciseMap.get(set.exerciseId);
     const normalizedSet = {
-      weight: String(set.weight),
+      weight: set.weight === null ? null : String(set.weight),
       reps: String(set.reps),
     };
 

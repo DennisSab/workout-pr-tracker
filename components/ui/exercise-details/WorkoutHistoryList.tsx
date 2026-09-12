@@ -1,4 +1,5 @@
 import type { GroupedWorkoutHistory } from "@/lib/exercise-details";
+import { formatWeight } from "@/lib/formatters";
 
 type WorkoutHistoryListProps = {
   workouts: GroupedWorkoutHistory[];
@@ -49,7 +50,7 @@ export default function WorkoutHistoryList({
                 <p className="text-sm text-gray-400">Set {set.setNumber}</p>
 
                 <p className="mt-1 font-semibold text-white">
-                  {set.weight}kg × {set.reps}
+                  {formatWeight(set.weight)} × {set.reps}
                 </p>
               </div>
             ))}

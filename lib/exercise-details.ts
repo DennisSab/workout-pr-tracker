@@ -3,7 +3,7 @@ export type ExerciseSetWithWorkout = {
   workoutId: string;
   setNumber: number;
   reps: number;
-  weight: number;
+  weight: number | null;
   workout: {
     id: string;
     date: Date;
@@ -12,10 +12,10 @@ export type ExerciseSetWithWorkout = {
 };
 
 export type ExerciseStats = {
-  personalRecord: number;
+  personalRecord: number | null;
   totalSessions: number;
   totalSets: number;
-  totalVolume: number;
+  totalVolume: number | null;
 };
 
 export type GroupedWorkoutHistory = {
@@ -26,7 +26,7 @@ export type GroupedWorkoutHistory = {
     id: string;
     setNumber: number;
     reps: number;
-    weight: number;
+    weight: number | null;
   }>;
 };
 
@@ -35,16 +35,18 @@ export function buildExerciseStats(
 ): ExerciseStats {
   return sets.reduce<ExerciseStats>(
     (stats, set) => {
-      stats.personalRecord = Math.max(stats.personalRecord, set.weight);
+      if (set.weight !== null) {
+        stats.personalRecord = Math.max(stats.personalRecord ?? 0, set.weight);
+        stats.totalVolume = (stats.totalVolume ?? 0) + set.weight * set.reps;
+      }
       stats.totalSets += 1;
-      stats.totalVolume += set.weight * set.reps;
       return stats;
     },
     {
-      personalRecord: 0,
+      personalRecord: null,
       totalSessions: new Set(sets.map((set) => set.workoutId)).size,
       totalSets: 0,
-      totalVolume: 0,
+      totalVolume: null,
     }
   );
 }

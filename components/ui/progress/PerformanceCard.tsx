@@ -1,6 +1,6 @@
 type PerformanceCardProps = {
   label: string;
-  weight: number;
+  weight: number | null;
   reps: number;
   difference?: number | null;
 };
@@ -16,7 +16,7 @@ export default function PerformanceCard({
       <p className="text-sm text-gray-400">{label}</p>
 
       <p className="mt-1 font-semibold">
-        {weight} kg × {reps} reps
+        {weight === null ? "Bodyweight" : `${weight} kg`} × {reps} reps
       </p>
 
       {difference !== null && (

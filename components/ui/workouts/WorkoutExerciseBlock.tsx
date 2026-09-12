@@ -16,7 +16,7 @@ type WorkoutExerciseBlockProps = {
     exerciseIndex: number,
     setIndex: number,
     field: keyof WorkoutFormSet,
-    value: string
+    value: string | null
   ) => void;
   onAddSet: (exerciseIndex: number) => void;
   onRemoveSet: (exerciseIndex: number, setIndex: number) => void;

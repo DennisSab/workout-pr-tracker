@@ -1,0 +1,2767 @@
+{
+  "mode": "READ ONLY PREVIEW — NOT AN EXECUTABLE IMPORT PAYLOAD",
+  "generatedAt": "2026-09-07T20:41:33.801Z",
+  "sourceSha256": "17c00aa6416348fd5916019af60758b18cbeee6220df2cf0b9a692a6537e1238",
+  "readyForImport": true,
+  "totals": {
+    "workouts": 24,
+    "exercisesPerformed": 121,
+    "distinctExercises": 31,
+    "sets": 345,
+    "weightedSets": 342,
+    "bodyweightSets": 3,
+    "earliestDate": "2026-06-08",
+    "latestDate": "2026-09-05"
+  },
+  "workouts": [
+    {
+      "date": "2026-06-08",
+      "label": null,
+      "exerciseCount": 7,
+      "setCount": 18
+    },
+    {
+      "date": "2026-06-10",
+      "label": null,
+      "exerciseCount": 7,
+      "setCount": 20
+    },
+    {
+      "date": "2026-07-03",
+      "label": null,
+      "exerciseCount": 4,
+      "setCount": 11
+    },
+    {
+      "date": "2026-07-04",
+      "label": null,
+      "exerciseCount": 5,
+      "setCount": 15
+    },
+    {
+      "date": "2026-07-08",
+      "label": "Push",
+      "exerciseCount": 4,
+      "setCount": 12
+    },
+    {
+      "date": "2026-07-13",
+      "label": "Push",
+      "exerciseCount": 6,
+      "setCount": 18
+    },
+    {
+      "date": "2026-07-14",
+      "label": "Pull",
+      "exerciseCount": 6,
+      "setCount": 18
+    },
+    {
+      "date": "2026-07-15",
+      "label": "Legs",
+      "exerciseCount": 5,
+      "setCount": 15
+    },
+    {
+      "date": "2026-07-21",
+      "label": "Push",
+      "exerciseCount": 4,
+      "setCount": 12
+    },
+    {
+      "date": "2026-07-22",
+      "label": "Pull",
+      "exerciseCount": 4,
+      "setCount": 12
+    },
+    {
+      "date": "2026-07-24",
+      "label": "Upper",
+      "exerciseCount": 5,
+      "setCount": 14
+    },
+    {
+      "date": "2026-07-29",
+      "label": "Push",
+      "exerciseCount": 6,
+      "setCount": 16
+    },
+    {
+      "date": "2026-08-04",
+      "label": "Push",
+      "exerciseCount": 6,
+      "setCount": 16
+    },
+    {
+      "date": "2026-08-06",
+      "label": "Pull",
+      "exerciseCount": 4,
+      "setCount": 11
+    },
+    {
+      "date": "2026-08-08",
+      "label": "Upper",
+      "exerciseCount": 6,
+      "setCount": 16
+    },
+    {
+      "date": "2026-08-11",
+      "label": "Push",
+      "exerciseCount": 3,
+      "setCount": 8
+    },
+    {
+      "date": "2026-08-13",
+      "label": "Upper",
+      "exerciseCount": 5,
+      "setCount": 15
+    },
+    {
+      "date": "2026-08-17",
+      "label": "Push",
+      "exerciseCount": 5,
+      "setCount": 15
+    },
+    {
+      "date": "2026-08-19",
+      "label": "Pull",
+      "exerciseCount": 5,
+      "setCount": 14
+    },
+    {
+      "date": "2026-08-21",
+      "label": "Upper",
+      "exerciseCount": 5,
+      "setCount": 14
+    },
+    {
+      "date": "2026-08-25",
+      "label": "Push",
+      "exerciseCount": 6,
+      "setCount": 16
+    },
+    {
+      "date": "2026-08-27",
+      "label": "Pull",
+      "exerciseCount": 4,
+      "setCount": 12
+    },
+    {
+      "date": "2026-09-03",
+      "label": "Push",
+      "exerciseCount": 5,
+      "setCount": 15
+    },
+    {
+      "date": "2026-09-05",
+      "label": "Upper",
+      "exerciseCount": 4,
+      "setCount": 12
+    }
+  ],
+  "blockers": [],
+  "warnings": [
+    "Date-only notes have no time or timezone. Proposed conversion is server-local noon, matching the existing API; confirm the execution timezone before a future import.",
+    "2026-07-13 Pec Fly Machine weights 6, 7.5, 12.5 kg are substantially below surrounding entries; preserved exactly as supplied.",
+    "2026-06-08 Straight-Bar Triceps Pushdown is one set of 35 reps at 25 kg; preserved exactly as supplied.",
+    "One- and two-set exercise blocks are intentional transcriptions; no missing sets were inferred.",
+    "Single-Arm Dumbbell Row has one supplied rep count per set; no left/right conversion or doubled sets are needed."
+  ],
+  "databaseCounts": {
+    "workouts": 0,
+    "workout_sets": 0
+  },
+  "canonicalExercisesResolved": 31,
+  "userCount": 1,
+  "proposedUserId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+  "datePolicy": "Date-only 2026 values; proposed persistence follows existing server-local noon convention. No original time of day was supplied.",
+  "bodyweightPolicy": "Bodyweight sets store weight null. No numeric load is inferred. Preview verifies database nullable-weight support before reporting import readiness.",
+  "resolvedWorkouts": [
+    {
+      "date": "2026-06-08",
+      "notes": null,
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 40
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 45
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 17,
+          "weight": 50
+        },
+        {
+          "exerciseId": "8c9e899f-0fee-4bd7-8a4b-c4b50666d444",
+          "exerciseName": "Chest Dips",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": null,
+          "sourceWeight": "bodyweight"
+        },
+        {
+          "exerciseId": "8c9e899f-0fee-4bd7-8a4b-c4b50666d444",
+          "exerciseName": "Chest Dips",
+          "setNumber": 2,
+          "reps": 11,
+          "weight": null,
+          "sourceWeight": "bodyweight"
+        },
+        {
+          "exerciseId": "8c9e899f-0fee-4bd7-8a4b-c4b50666d444",
+          "exerciseName": "Chest Dips",
+          "setNumber": 3,
+          "reps": 11,
+          "weight": null,
+          "sourceWeight": "bodyweight"
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 18,
+          "weight": 25
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 32
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 3,
+          "reps": 14,
+          "weight": 32
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 2,
+          "reps": 14,
+          "weight": 25
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 3,
+          "reps": 14,
+          "weight": 25
+        },
+        {
+          "exerciseId": "a18ea2f0-f441-4e99-a2eb-bc14448ba70f",
+          "exerciseName": "Overhead Rope Triceps Extension",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "a18ea2f0-f441-4e99-a2eb-bc14448ba70f",
+          "exerciseName": "Overhead Rope Triceps Extension",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f2a3c9dc-d48d-4210-8831-227d1cd66b92",
+          "exerciseName": "Straight-Bar Triceps Pushdown",
+          "setNumber": 1,
+          "reps": 35,
+          "weight": 25
+        }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "notes": null,
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 55
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 55
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 60
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 65
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 15
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 16,
+          "weight": 20
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 10
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 10
+        },
+        {
+          "exerciseId": "782c5d14-6a95-44ac-ba30-3b24aef5f800",
+          "exerciseName": "Face Pull",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "782c5d14-6a95-44ac-ba30-3b24aef5f800",
+          "exerciseName": "Face Pull",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "782c5d14-6a95-44ac-ba30-3b24aef5f800",
+          "exerciseName": "Face Pull",
+          "setNumber": 3,
+          "reps": 8,
+          "weight": 30
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 1,
+          "reps": 11,
+          "weight": 15
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 2,
+          "reps": 9,
+          "weight": 15
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 10
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 9
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 2,
+          "reps": 18,
+          "weight": 9
+        }
+      ]
+    },
+    {
+      "date": "2026-07-03",
+      "notes": null,
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "c377596f-2a7e-494d-8a09-bc1851743f91",
+          "exerciseName": "Hack Squat",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 40
+        },
+        {
+          "exerciseId": "c377596f-2a7e-494d-8a09-bc1851743f91",
+          "exerciseName": "Hack Squat",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 64
+        },
+        {
+          "exerciseId": "c377596f-2a7e-494d-8a09-bc1851743f91",
+          "exerciseName": "Hack Squat",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 74
+        },
+        {
+          "exerciseId": "9337af61-d14c-4b30-ad3a-930daaf03bd0",
+          "exerciseName": "Leg Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 40
+        },
+        {
+          "exerciseId": "9337af61-d14c-4b30-ad3a-930daaf03bd0",
+          "exerciseName": "Leg Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "9337af61-d14c-4b30-ad3a-930daaf03bd0",
+          "exerciseName": "Leg Press",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 120
+        },
+        {
+          "exerciseId": "089128d9-875f-4970-8ea8-270047bc198d",
+          "exerciseName": "Lying Leg Curl",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 23
+        },
+        {
+          "exerciseId": "089128d9-875f-4970-8ea8-270047bc198d",
+          "exerciseName": "Lying Leg Curl",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 30
+        },
+        {
+          "exerciseId": "089128d9-875f-4970-8ea8-270047bc198d",
+          "exerciseName": "Lying Leg Curl",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 30
+        },
+        {
+          "exerciseId": "7b809343-65a4-4caf-bb56-b6c1f49d6f3b",
+          "exerciseName": "Leg Extension",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 25
+        },
+        {
+          "exerciseId": "7b809343-65a4-4caf-bb56-b6c1f49d6f3b",
+          "exerciseName": "Leg Extension",
+          "setNumber": 2,
+          "reps": 22,
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "notes": null,
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 32
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 32
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 32
+        },
+        {
+          "exerciseId": "315a2336-d453-4cc2-95ef-b475d3461483",
+          "exerciseName": "Seated Dip Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 40
+        },
+        {
+          "exerciseId": "315a2336-d453-4cc2-95ef-b475d3461483",
+          "exerciseName": "Seated Dip Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 40
+        },
+        {
+          "exerciseId": "315a2336-d453-4cc2-95ef-b475d3461483",
+          "exerciseName": "Seated Dip Machine",
+          "setNumber": 3,
+          "reps": 13,
+          "weight": 40
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 35
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 35
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 16,
+          "weight": 35
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 8
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 8
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 3,
+          "reps": 20,
+          "weight": 8
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 12
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 18
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 18
+        }
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 55
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 55
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 55
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 13,
+          "weight": 35
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 35
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 2,
+          "reps": 20,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 7.5
+        }
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 9,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 14,
+          "weight": 55
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 60
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 65
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 32
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 39
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 3,
+          "reps": 6,
+          "weight": 39
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 6
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 15
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 15
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 15
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 12
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 18
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 3,
+          "reps": 17,
+          "weight": 18
+        }
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "notes": "Pull",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 40
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 3,
+          "reps": 13,
+          "weight": 50
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 50
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 55
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 60
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 2,
+          "reps": 11,
+          "weight": 15
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 3,
+          "reps": 7,
+          "weight": 15
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 2,
+          "reps": 8,
+          "weight": 10
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "date": "2026-07-15",
+      "notes": "Legs",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "c377596f-2a7e-494d-8a09-bc1851743f91",
+          "exerciseName": "Hack Squat",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 40
+        },
+        {
+          "exerciseId": "c377596f-2a7e-494d-8a09-bc1851743f91",
+          "exerciseName": "Hack Squat",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 80
+        },
+        {
+          "exerciseId": "c377596f-2a7e-494d-8a09-bc1851743f91",
+          "exerciseName": "Hack Squat",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 120
+        },
+        {
+          "exerciseId": "9337af61-d14c-4b30-ad3a-930daaf03bd0",
+          "exerciseName": "Leg Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 120
+        },
+        {
+          "exerciseId": "9337af61-d14c-4b30-ad3a-930daaf03bd0",
+          "exerciseName": "Leg Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 120
+        },
+        {
+          "exerciseId": "9337af61-d14c-4b30-ad3a-930daaf03bd0",
+          "exerciseName": "Leg Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 140
+        },
+        {
+          "exerciseId": "66da64c7-a06c-440d-8a75-7e6f9d351ed2",
+          "exerciseName": "Hip Abduction Machine",
+          "setNumber": 1,
+          "reps": 7,
+          "weight": 35
+        },
+        {
+          "exerciseId": "66da64c7-a06c-440d-8a75-7e6f9d351ed2",
+          "exerciseName": "Hip Abduction Machine",
+          "setNumber": 2,
+          "reps": 20,
+          "weight": 30
+        },
+        {
+          "exerciseId": "66da64c7-a06c-440d-8a75-7e6f9d351ed2",
+          "exerciseName": "Hip Abduction Machine",
+          "setNumber": 3,
+          "reps": 20,
+          "weight": 35
+        },
+        {
+          "exerciseId": "7b809343-65a4-4caf-bb56-b6c1f49d6f3b",
+          "exerciseName": "Leg Extension",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 25
+        },
+        {
+          "exerciseId": "7b809343-65a4-4caf-bb56-b6c1f49d6f3b",
+          "exerciseName": "Leg Extension",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 30
+        },
+        {
+          "exerciseId": "7b809343-65a4-4caf-bb56-b6c1f49d6f3b",
+          "exerciseName": "Leg Extension",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 35
+        },
+        {
+          "exerciseId": "9f6a8002-d14a-4370-8563-3b7892882497",
+          "exerciseName": "Smith Machine Squat",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "9f6a8002-d14a-4370-8563-3b7892882497",
+          "exerciseName": "Smith Machine Squat",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "9f6a8002-d14a-4370-8563-3b7892882497",
+          "exerciseName": "Smith Machine Squat",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 25
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 70
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 70
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 65
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 1,
+          "reps": 7,
+          "weight": 32
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 25
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 32
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 32
+        }
+      ]
+    },
+    {
+      "date": "2026-07-22",
+      "notes": "Pull",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "affbb55c-e8a8-4858-a0aa-f89b07613465",
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 1,
+          "reps": 14,
+          "weight": 35
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 2,
+          "reps": 9,
+          "weight": 20
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 3,
+          "reps": 9,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "date": "2026-07-24",
+      "notes": "Upper",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 20
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 20
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "b745a98c-9e0a-459d-961f-0a73eb491e02",
+          "exerciseName": "Dumbbell Shrugs",
+          "setNumber": 1,
+          "reps": 20,
+          "weight": 20
+        },
+        {
+          "exerciseId": "b745a98c-9e0a-459d-961f-0a73eb491e02",
+          "exerciseName": "Dumbbell Shrugs",
+          "setNumber": 2,
+          "reps": 20,
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 9,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 9,
+          "weight": 25
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 70
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 75
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 8,
+          "weight": 75
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 3,
+          "reps": 8,
+          "weight": 32
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 24
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 24
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 24
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 2,
+          "reps": 11,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 9,
+          "weight": 30
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 30
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 75
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 75
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 75
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 35
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 40
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 45
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 2,
+          "reps": 8,
+          "weight": 32
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 32
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 32
+        }
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "notes": "Pull",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 60
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 65
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 70
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 75
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 2,
+          "reps": 9,
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "date": "2026-08-08",
+      "notes": "Upper",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 40
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 40
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 40
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 9
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 10
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 3,
+          "reps": 16,
+          "weight": 10
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 5
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 6
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 3,
+          "reps": 20,
+          "weight": 6
+        },
+        {
+          "exerciseId": "03f3e7d7-baf2-48e3-b4ff-c25b84690731",
+          "exerciseName": "Dumbbell Bicep Curl",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 10
+        },
+        {
+          "exerciseId": "03f3e7d7-baf2-48e3-b4ff-c25b84690731",
+          "exerciseName": "Dumbbell Bicep Curl",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "03f3e7d7-baf2-48e3-b4ff-c25b84690731",
+          "exerciseName": "Dumbbell Bicep Curl",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 12.5
+        }
+      ]
+    },
+    {
+      "date": "2026-08-11",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 9,
+          "weight": 80
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 24
+        },
+        {
+          "exerciseId": "9cfc86aa-6150-4f31-9596-215a89bb1131",
+          "exerciseName": "Triceps Extension Machine",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 24
+        }
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "notes": "Upper",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 25
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 25
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 60
+        },
+        {
+          "exerciseId": "70c8858f-2e91-453b-a84c-1a5695e89fe6",
+          "exerciseName": "Standing Multi Flight",
+          "setNumber": 3,
+          "reps": 13,
+          "weight": 60
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 10
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 12.5
+        }
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 45
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 3,
+          "reps": 20,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "notes": "Pull",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 60
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 60
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 60
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 30
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 13,
+          "weight": 30
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 1,
+          "reps": 13,
+          "weight": 80
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 2,
+          "reps": 11,
+          "weight": 80
+        },
+        {
+          "exerciseId": "b60ab340-c6c8-4e98-b892-b8bd687d06c8",
+          "exerciseName": "Seated Cable Row",
+          "setNumber": 3,
+          "reps": 11,
+          "weight": 80
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 1,
+          "reps": 8,
+          "weight": 25
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 20
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 3,
+          "reps": 11,
+          "weight": 15
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 1,
+          "reps": 8,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "notes": "Upper",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 2,
+          "reps": 13,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 13,
+          "weight": 45
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 45
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 45
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 10
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "b745a98c-9e0a-459d-961f-0a73eb491e02",
+          "exerciseName": "Dumbbell Shrugs",
+          "setNumber": 1,
+          "reps": 25,
+          "weight": 25
+        },
+        {
+          "exerciseId": "b745a98c-9e0a-459d-961f-0a73eb491e02",
+          "exerciseName": "Dumbbell Shrugs",
+          "setNumber": 2,
+          "reps": 25,
+          "weight": 27.5
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 13,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 30
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 13,
+          "weight": 80
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 1,
+          "reps": 11,
+          "weight": 20
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 17.5
+        },
+        {
+          "exerciseId": "e4d5828a-8e92-4be3-9758-e2a8dccf8796",
+          "exerciseName": "Dumbbell Shoulder Press",
+          "setNumber": 3,
+          "reps": 11,
+          "weight": 17.5
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 10
+        },
+        {
+          "exerciseId": "3c5277c0-4250-4c7f-ba7d-7265e62b015a",
+          "exerciseName": "Dumbbell Lateral Raise",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 10
+        },
+        {
+          "exerciseId": "7e4a970e-31e9-4440-a28c-446e21bd77a9",
+          "exerciseName": "Triceps Rope Pushdown",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "notes": "Pull",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 30
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 30
+        },
+        {
+          "exerciseId": "91b3940b-0510-4895-beee-104385ff99a0",
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 30
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 60
+        },
+        {
+          "exerciseId": "a0506cd6-1df8-4e96-8b90-0089f5ba62bb",
+          "exerciseName": "Lat Pulldown",
+          "setNumber": 3,
+          "reps": 9,
+          "weight": 60
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 1,
+          "reps": 15,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 2,
+          "reps": 20,
+          "weight": 10
+        },
+        {
+          "exerciseId": "a54179c7-493a-43bb-ab08-2357f2d86b2f",
+          "exerciseName": "Dumbbell Hammer Curl",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 12.5
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 15
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 2,
+          "reps": 8,
+          "weight": 15
+        },
+        {
+          "exerciseId": "41d84743-49f7-462e-b4ba-6bb61c988ffd",
+          "exerciseName": "Bicep Curl Machine",
+          "setNumber": 3,
+          "reps": 9,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "notes": "Push",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 1,
+          "reps": 10,
+          "weight": 30
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 2,
+          "reps": 10,
+          "weight": 30
+        },
+        {
+          "exerciseId": "b9cd4079-fcb9-4e73-ad07-6f316f053095",
+          "exerciseName": "Dumbbell Chest Press",
+          "setNumber": 3,
+          "reps": 9,
+          "weight": 30
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "3502fab2-bb5f-40da-9ece-2501e2643c8f",
+          "exerciseName": "Peck Deck",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 80
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 50
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 25
+        },
+        {
+          "exerciseId": "f68acf50-f714-410a-83c1-8464e9fb3950",
+          "exerciseName": "Shoulder Press Machine",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "notes": "Upper",
+      "userId": "fec94926-025e-42c6-9f03-c4c90eeee5a1",
+      "sets": [
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 20
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 2,
+          "reps": 15,
+          "weight": 20
+        },
+        {
+          "exerciseId": "cd1d08f3-d5f2-45c5-bd2e-e837a9faf058",
+          "exerciseName": "Incline Dumbbell Press",
+          "setNumber": 3,
+          "reps": 12,
+          "weight": 22.5
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 55
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 2,
+          "reps": 12,
+          "weight": 55
+        },
+        {
+          "exerciseId": "2533cf32-9403-42b0-a6b5-d74227cb7381",
+          "exerciseName": "Pec Fly Machine",
+          "setNumber": 3,
+          "reps": 15,
+          "weight": 55
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 2,
+          "reps": 11,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "c26bbf9f-c3db-4bc6-a378-de965dd03c43",
+          "exerciseName": "Seated Lateral Raise Machine",
+          "setNumber": 3,
+          "reps": 10,
+          "weight": 27.5
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 1,
+          "reps": 12,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 2,
+          "reps": 9,
+          "weight": 7.5
+        },
+        {
+          "exerciseId": "f33b9d73-5821-463b-8aae-82cc1f46524f",
+          "exerciseName": "Seated Rear Delt Fly",
+          "setNumber": 3,
+          "reps": 8,
+          "weight": 7.5
+        }
+      ]
+    }
+  ]
+}

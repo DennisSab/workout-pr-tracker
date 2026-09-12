@@ -4,7 +4,8 @@ export const workoutDateFormatter = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
 });
 
-export function formatWeight(weight: number) {
+export function formatWeight(weight: number | null) {
+  if (weight === null) return "Bodyweight";
   return `${Number.isInteger(weight) ? weight : weight.toFixed(1)}kg`;
 }
 

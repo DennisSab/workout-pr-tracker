@@ -1,0 +1,2487 @@
+{
+  "version": 1,
+  "mode": "staging-only",
+  "weightUnit": "kg",
+  "datePolicy": "Date-only 2026 values; proposed persistence follows existing server-local noon convention. No original time of day was supplied.",
+  "bodyweightPolicy": "Bodyweight sets store weight null. No numeric load is inferred. Preview verifies database nullable-weight support before reporting import readiness.",
+  "singleArmRepPolicy": "Use maximum right/left reps for a set when both are supplied. These supplied notes contain only one rep count per set.",
+  "workouts": [
+    {
+      "date": "2026-06-08",
+      "notes": null,
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 22.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 22.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 22.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 17,
+              "weight": 50.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Chest Dips",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": null,
+              "sourceWeight": "bodyweight"
+            },
+            {
+              "setNumber": 2,
+              "reps": 11,
+              "weight": null,
+              "sourceWeight": "bodyweight"
+            },
+            {
+              "setNumber": 3,
+              "reps": 11,
+              "weight": null,
+              "sourceWeight": "bodyweight"
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 18,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 14,
+              "weight": 32.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Rope Pushdown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 14,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 14,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Overhead Rope Triceps Extension",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Straight-Bar Triceps Pushdown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 35,
+              "weight": 25.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "notes": null,
+      "exercises": [
+        {
+          "exerciseName": "Lat Pulldown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 55.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Cable Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 60.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 65.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 16,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Face Pull",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 8,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Bicep Curl Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 11,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 9,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Hammer Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 9.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 18,
+              "weight": 9.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-03",
+      "notes": null,
+      "exercises": [
+        {
+          "exerciseName": "Hack Squat",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 64.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 74.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Leg Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 120.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Lying Leg Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 23.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Leg Extension",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 22,
+              "weight": 30.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "notes": null,
+      "exercises": [
+        {
+          "exerciseName": "Shoulder Press Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 32.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Dip Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 13,
+              "weight": 40.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 35.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 35.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 16,
+              "weight": 35.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Lateral Raise",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 8.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 8.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 20,
+              "weight": 8.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 12.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 18.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 18.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 55.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 13,
+              "weight": 35.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 35.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Lateral Raise",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 20,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 7.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 9,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 14,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 60.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 65.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Shoulder Press Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 39.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 6,
+              "weight": 39.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 6.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 12.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Rope Pushdown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 15.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 12.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 18.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 17,
+              "weight": 18.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "notes": "Pull",
+      "exercises": [
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 12.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Standing Multi Flight",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 13,
+              "weight": 50.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Lat Pulldown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 60.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Bicep Curl Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 11,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 7,
+              "weight": 15.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Hammer Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 8,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 10.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-15",
+      "notes": "Legs",
+      "exercises": [
+        {
+          "exerciseName": "Hack Squat",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 120.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Leg Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 120.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 120.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 140.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Hip Abduction Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 7,
+              "weight": 35.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 20,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 20,
+              "weight": 35.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Leg Extension",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 35.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Smith Machine Squat",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 20.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 70.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 70.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 65.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Shoulder Press Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 7,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 32.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-22",
+      "notes": "Pull",
+      "exercises": [
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Single-Arm Dumbbell Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Standing Multi Flight",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 14,
+              "weight": 35.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 50.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Bicep Curl Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 9,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 9,
+              "weight": 15.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-24",
+      "notes": "Upper",
+      "exercises": [
+        {
+          "exerciseName": "Incline Dumbbell Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Lat Pulldown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 50.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Lateral Raise Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Hammer Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Shrugs",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 20,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 20,
+              "weight": 20.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 9,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 9,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 70.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 75.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 8,
+              "weight": 75.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Shoulder Press Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 8,
+              "weight": 32.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Lateral Raise Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 24.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 24.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 24.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Rope Pushdown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 11,
+              "weight": 15.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 9,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 75.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 75.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 75.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 35.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 45.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Shoulder Press Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 8,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Lateral Raise Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 32.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 32.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "notes": "Pull",
+      "exercises": [
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Lat Pulldown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 60.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Cable Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 65.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 70.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 75.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Bicep Curl Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 9,
+              "weight": 20.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-08",
+      "notes": "Upper",
+      "exercises": [
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 15.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Incline Dumbbell Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 22.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 22.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 22.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 40.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 40.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Lateral Raise",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 9.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 16,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Rear Delt Fly",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 5.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 6.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 20,
+              "weight": 6.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Bicep Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 12.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-11",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 27.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 9,
+              "weight": 80.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Extension Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 24.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 24.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "notes": "Upper",
+      "exercises": [
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 25.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Incline Dumbbell Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 22.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 22.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Shoulder Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 15.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Standing Multi Flight",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 60.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 13,
+              "weight": 60.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Hammer Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 12.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 27.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 80.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 45.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Shoulder Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Lateral Raise",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 20,
+              "weight": 10.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "notes": "Pull",
+      "exercises": [
+        {
+          "exerciseName": "Lat Pulldown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 60.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 60.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 60.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 13,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Cable Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 13,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 11,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 11,
+              "weight": 80.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Bicep Curl Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 8,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 11,
+              "weight": 15.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Hammer Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 8,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 10.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "notes": "Upper",
+      "exercises": [
+        {
+          "exerciseName": "Incline Dumbbell Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 13,
+              "weight": 22.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 13,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 45.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 45.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Lateral Raise",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Rear Delt Fly",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 7.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Shrugs",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 25,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 25,
+              "weight": 27.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 13,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 13,
+              "weight": 80.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 50.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Shoulder Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 11,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 17.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 11,
+              "weight": 17.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Lateral Raise",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 10.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Triceps Rope Pushdown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 20.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "notes": "Pull",
+      "exercises": [
+        {
+          "exerciseName": "EZ-Bar Bent-Over Row",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Lat Pulldown",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 60.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 9,
+              "weight": 60.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Dumbbell Hammer Curl",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 15,
+              "weight": 12.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 20,
+              "weight": 10.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 12.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Bicep Curl Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 8,
+              "weight": 15.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 9,
+              "weight": 15.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "notes": "Push",
+      "exercises": [
+        {
+          "exerciseName": "Dumbbell Chest Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 10,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 10,
+              "weight": 30.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 9,
+              "weight": 30.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Peck Deck",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 80.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 80.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 50.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 50.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Shoulder Press Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 25.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 20.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Lateral Raise Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 20.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "notes": "Upper",
+      "exercises": [
+        {
+          "exerciseName": "Incline Dumbbell Press",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 15,
+              "weight": 20.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 12,
+              "weight": 22.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Pec Fly Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 2,
+              "reps": 12,
+              "weight": 55.0
+            },
+            {
+              "setNumber": 3,
+              "reps": 15,
+              "weight": 55.0
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Lateral Raise Machine",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 11,
+              "weight": 27.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 10,
+              "weight": 27.5
+            }
+          ]
+        },
+        {
+          "exerciseName": "Seated Rear Delt Fly",
+          "sets": [
+            {
+              "setNumber": 1,
+              "reps": 12,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 2,
+              "reps": 9,
+              "weight": 7.5
+            },
+            {
+              "setNumber": 3,
+              "reps": 8,
+              "weight": 7.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 import prisma from "@/lib/prisma";
 import { parseWorkoutPayload } from "@/lib/workout-validation";
+import {
+  InvalidExerciseReferencesError,
+  updateWorkout,
+  WorkoutNotFoundError,
+} from "@/lib/workout-write";
 import { NextResponse } from "next/server";
 
 type WorkoutRouteContext = {
@@ -51,39 +56,17 @@ export async function PUT(
     );
   }
 
-  const existingWorkout = await prisma.workout.findUnique({
-    where: { id },
-    select: { id: true },
-  });
-
-  if (!existingWorkout) {
-    return NextResponse.json(
-      { error: "Workout not found." },
-      { status: 404 }
-    );
+  try {
+    await updateWorkout(prisma, id, parsedWorkout.data);
+  } catch (error) {
+    if (error instanceof InvalidExerciseReferencesError) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+    if (error instanceof WorkoutNotFoundError) {
+      return NextResponse.json({ error: error.message }, { status: 404 });
+    }
+    throw error;
   }
-
-  await prisma.workout.update({
-    where: { id },
-    data: {
-      date: parsedWorkout.data.date,
-      notes: parsedWorkout.data.notes,
-    },
-  });
-
-  await prisma.workoutSet.deleteMany({
-    where: { workoutId: id },
-  });
-
-  await prisma.workoutSet.createMany({
-    data: parsedWorkout.data.sets.map((set) => ({
-      workoutId: id,
-      exerciseId: set.exerciseId,
-      setNumber: set.setNumber,
-      reps: set.reps,
-      weight: set.weight,
-    })),
-  });
 
   return NextResponse.json({ success: true, workoutId: id });
 }

@@ -1,5 +1,10 @@
 import prisma from "@/lib/prisma";
 import { parseWorkoutPayload } from "@/lib/workout-validation";
+import {
+  createWorkout,
+  InvalidExerciseReferencesError,
+  WorkoutUserMissingError,
+} from "@/lib/workout-write";
 import { NextResponse } from "next/server";
 
 // ✅ GET ALL WORKOUTS
@@ -31,29 +36,18 @@ export async function POST(req: Request) {
     );
   }
 
-  const user = await prisma.user.findFirst();
-
-  if (!user) {
-    return NextResponse.json({ error: "No user found" }, { status: 400 });
+  let workout;
+  try {
+    workout = await createWorkout(prisma, parsedWorkout.data);
+  } catch (error) {
+    if (
+      error instanceof InvalidExerciseReferencesError ||
+      error instanceof WorkoutUserMissingError
+    ) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+    throw error;
   }
-
-  const workout = await prisma.workout.create({
-    data: {
-      userId: user.id,
-      notes: parsedWorkout.data.notes,
-      date: parsedWorkout.data.date,
-    },
-  });
-
-  await prisma.workoutSet.createMany({
-    data: parsedWorkout.data.sets.map((set) => ({
-      workoutId: workout.id,
-      exerciseId: set.exerciseId,
-      setNumber: set.setNumber,
-      reps: set.reps,
-      weight: set.weight,
-    })),
-  });
 
   return NextResponse.json({ success: true, workoutId: workout.id });
 }

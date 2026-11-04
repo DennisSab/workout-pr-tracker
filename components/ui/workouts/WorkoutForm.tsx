@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useState, useSyncExternalStore, useTransition } from "react";
+import { getLocalCalendarDate } from "@/lib/local-date";
 import WorkoutExerciseBlock from "@/components/ui/workouts/WorkoutExerciseBlock";
 import type {
   ExerciseOption,
@@ -21,6 +22,7 @@ type WorkoutFormProps = {
 
 const emptySet = { weight: "", reps: "" };
 const emptyExercise = { exerciseId: "", sets: [emptySet] };
+const subscribeToLocalDate = () => () => {};
 
 export default function WorkoutForm({
   mode,
@@ -35,6 +37,11 @@ export default function WorkoutForm({
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [values, setValues] = useState<WorkoutFormValues>(initialValues);
+  const localDefaultDate = useSyncExternalStore(
+    subscribeToLocalDate,
+    getLocalCalendarDate,
+    () => initialValues.date
+  );
 
   function updateExercise(
     exerciseIndex: number,
@@ -122,7 +129,10 @@ export default function WorkoutForm({
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(values),
+          body: JSON.stringify({
+            ...values,
+            date: values.date || localDefaultDate,
+          }),
         });
 
         if (!response.ok) {
@@ -158,7 +168,7 @@ export default function WorkoutForm({
 
                 <input
                   type="date"
-                  value={values.date}
+                  value={values.date || localDefaultDate}
                   onChange={(event) =>
                     setValues((currentValues) => ({
                       ...currentValues,

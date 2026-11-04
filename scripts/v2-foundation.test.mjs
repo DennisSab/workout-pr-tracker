@@ -5,7 +5,7 @@ import test from "node:test";
 
 registerHooks({
   resolve(specifier, context, nextResolve) {
-    if (specifier.startsWith("@/lib/")) {
+    if (specifier.startsWith("@/")) {
       return nextResolve(
         new URL(`../${specifier.slice(2)}.ts`, import.meta.url).href,
         context
@@ -17,10 +17,14 @@ registerHooks({
 
 const { getLocalCalendarDate } = await import("../lib/local-date.ts");
 const { parseWorkoutPayload } = await import("../lib/workout-validation.ts");
+const { userIdFromSession } = await import("../lib/session-user.ts");
 const {
   createWorkout,
+  createWorkoutSet,
+  deleteWorkout,
   InvalidExerciseReferencesError,
   updateWorkout,
+  WorkoutNotFoundError,
 } = await import("../lib/workout-write.ts");
 
 function validWorkout(exerciseId = "exercise-1") {
@@ -58,10 +62,8 @@ function transactionalClient({ failSetWrite = false } = {}) {
               .filter((id) => id === "exercise-1")
               .map((id) => ({ id }));
           },
-        },
-        user: {
-          async findFirst() {
-            return { id: "user-1" };
+          async findUnique({ where }) {
+            return where.id === "exercise-1" ? { id: where.id } : null;
           },
         },
         workout: {
@@ -70,14 +72,21 @@ function transactionalClient({ failSetWrite = false } = {}) {
             pending.workouts.push(created);
             return { id: created.id };
           },
-          async findUnique({ where }) {
-            const workout = pending.workouts.find(({ id }) => id === where.id);
+          async findFirst({ where }) {
+            const workout = pending.workouts.find(
+              ({ id, userId }) => id === where.id && userId === where.userId
+            );
             return workout ? { id: workout.id } : null;
           },
           async update({ where, data }) {
             Object.assign(
               pending.workouts.find(({ id }) => id === where.id),
               data
+            );
+          },
+          async delete({ where }) {
+            pending.workouts = pending.workouts.filter(
+              ({ id }) => id !== where.id
             );
           },
         },
@@ -92,6 +101,11 @@ function transactionalClient({ failSetWrite = false } = {}) {
             pending.sets.push(
               ...data.map((set, index) => ({ id: `new-set-${index}`, ...set }))
             );
+          },
+          async create({ data }) {
+            const created = { id: "created-set", ...data };
+            pending.sets.push(created);
+            return created;
           },
         },
       };
@@ -121,7 +135,7 @@ test("unknown exercise references reject before create writes", async () => {
   const client = transactionalClient();
 
   await assert.rejects(
-    createWorkout(client, validWorkout("unknown")),
+    createWorkout(client, "user-1", validWorkout("unknown")),
     (error) =>
       error instanceof InvalidExerciseReferencesError &&
       error.exerciseIds[0] === "unknown"
@@ -134,7 +148,10 @@ test("unknown exercise references reject before create writes", async () => {
 test("workout creation rolls back metadata when set creation fails", async () => {
   const client = transactionalClient({ failSetWrite: true });
 
-  await assert.rejects(createWorkout(client, validWorkout()), /simulated/);
+  await assert.rejects(
+    createWorkout(client, "user-1", validWorkout()),
+    /simulated/
+  );
   assert.equal(client.transactionCalls, 1);
   assert.deepEqual(client.state.workouts.map(({ id }) => id), ["existing"]);
   assert.deepEqual(client.state.sets.map(({ id }) => id), ["old-set"]);
@@ -143,10 +160,11 @@ test("workout creation rolls back metadata when set creation fails", async () =>
 test("workout creation commits weighted and bodyweight sets together", async () => {
   const client = transactionalClient();
 
-  const created = await createWorkout(client, validWorkout());
+  const created = await createWorkout(client, "authenticated-user", validWorkout());
   assert.equal(created.id, "created");
   assert.equal(client.transactionCalls, 1);
   assert.equal(client.state.workouts.length, 2);
+  assert.equal(client.state.workouts[1].userId, "authenticated-user");
   assert.deepEqual(
     client.state.sets
       .filter(({ workoutId }) => workoutId === "created")
@@ -159,12 +177,61 @@ test("workout editing rolls back metadata and deleted sets when replacement fail
   const client = transactionalClient({ failSetWrite: true });
 
   await assert.rejects(
-    updateWorkout(client, "existing", validWorkout()),
+    updateWorkout(client, "user-1", "existing", validWorkout()),
     /simulated/
   );
   assert.equal(client.transactionCalls, 1);
   assert.equal(client.state.workouts[0].notes, "Before");
   assert.deepEqual(client.state.sets.map(({ id }) => id), ["old-set"]);
+});
+
+test("cross-user workout updates return not found without changing data", async () => {
+  const client = transactionalClient();
+
+  await assert.rejects(
+    updateWorkout(client, "user-2", "existing", validWorkout()),
+    (error) => error instanceof WorkoutNotFoundError
+  );
+  assert.equal(client.state.workouts[0].notes, "Before");
+  assert.deepEqual(client.state.sets.map(({ id }) => id), ["old-set"]);
+});
+
+test("deleting requires ownership and removes an owned workout transactionally", async () => {
+  const deniedClient = transactionalClient();
+  await assert.rejects(
+    deleteWorkout(deniedClient, "user-2", "existing"),
+    (error) => error instanceof WorkoutNotFoundError
+  );
+  assert.equal(deniedClient.state.workouts.length, 1);
+
+  const ownerClient = transactionalClient();
+  await deleteWorkout(ownerClient, "user-1", "existing");
+  assert.deepEqual(ownerClient.state.workouts, []);
+  assert.deepEqual(ownerClient.state.sets, []);
+});
+
+test("set creation requires an owned workout and a valid exercise", async () => {
+  const client = transactionalClient();
+  const input = {
+    workoutId: "existing",
+    exerciseId: "exercise-1",
+    setNumber: 2,
+    reps: 8,
+    weight: null,
+  };
+
+  await assert.rejects(
+    createWorkoutSet(client, "user-2", input),
+    (error) => error instanceof WorkoutNotFoundError
+  );
+  const created = await createWorkoutSet(client, "user-1", input);
+  assert.equal(created.weight, null);
+  assert.equal(client.state.sets.length, 2);
+});
+
+test("session resolution distinguishes anonymous and authenticated requests", async () => {
+  assert.equal(userIdFromSession(null), null);
+  assert.equal(userIdFromSession({ user: { id: "user-1" } }), "user-1");
 });
 
 test("local calendar dates use local date fields instead of UTC serialization", () => {

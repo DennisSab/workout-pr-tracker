@@ -17,13 +17,6 @@ export class InvalidExerciseReferencesError extends Error {
   }
 }
 
-export class WorkoutUserMissingError extends Error {
-  constructor() {
-    super("No user found.");
-    this.name = "WorkoutUserMissingError";
-  }
-}
-
 export class WorkoutNotFoundError extends Error {
   constructor() {
     super("Workout not found.");
@@ -60,17 +53,15 @@ function setData(workoutId: string, workout: ParsedWorkoutPayload) {
 
 export async function createWorkout(
   client: TransactionalPrismaClient,
+  userId: string,
   workout: ParsedWorkoutPayload
 ) {
   return client.$transaction(async (transaction) => {
     await assertExerciseReferences(transaction, workout);
 
-    const user = await transaction.user.findFirst({ select: { id: true } });
-    if (!user) throw new WorkoutUserMissingError();
-
     const createdWorkout = await transaction.workout.create({
       data: {
-        userId: user.id,
+        userId,
         notes: workout.notes,
         date: workout.date,
       },
@@ -87,12 +78,13 @@ export async function createWorkout(
 
 export async function updateWorkout(
   client: TransactionalPrismaClient,
+  userId: string,
   workoutId: string,
   workout: ParsedWorkoutPayload
 ) {
   return client.$transaction(async (transaction) => {
-    const existingWorkout = await transaction.workout.findUnique({
-      where: { id: workoutId },
+    const existingWorkout = await transaction.workout.findFirst({
+      where: { id: workoutId, userId },
       select: { id: true },
     });
     if (!existingWorkout) throw new WorkoutNotFoundError();
@@ -112,5 +104,52 @@ export async function updateWorkout(
     });
 
     return existingWorkout;
+  });
+}
+
+export async function deleteWorkout(
+  client: TransactionalPrismaClient,
+  userId: string,
+  workoutId: string
+) {
+  return client.$transaction(async (transaction) => {
+    const existingWorkout = await transaction.workout.findFirst({
+      where: { id: workoutId, userId },
+      select: { id: true },
+    });
+    if (!existingWorkout) throw new WorkoutNotFoundError();
+
+    await transaction.workoutSet.deleteMany({ where: { workoutId } });
+    await transaction.workout.delete({ where: { id: workoutId } });
+  });
+}
+
+type WorkoutSetWrite = {
+  workoutId: string;
+  exerciseId: string;
+  setNumber: number;
+  reps: number;
+  weight: number | null;
+};
+
+export async function createWorkoutSet(
+  client: TransactionalPrismaClient,
+  userId: string,
+  set: WorkoutSetWrite
+) {
+  return client.$transaction(async (transaction) => {
+    const workout = await transaction.workout.findFirst({
+      where: { id: set.workoutId, userId },
+      select: { id: true },
+    });
+    if (!workout) throw new WorkoutNotFoundError();
+
+    const exercise = await transaction.exercise.findUnique({
+      where: { id: set.exerciseId },
+      select: { id: true },
+    });
+    if (!exercise) throw new InvalidExerciseReferencesError([set.exerciseId]);
+
+    return transaction.workoutSet.create({ data: set });
   });
 }

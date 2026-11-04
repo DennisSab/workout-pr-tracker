@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
 import { parseWorkoutPayload } from "@/lib/workout-validation";
 import {
+  deleteWorkout as deleteWorkoutRecord,
   InvalidExerciseReferencesError,
   updateWorkout,
   WorkoutNotFoundError,
 } from "@/lib/workout-write";
+import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
 
 type WorkoutRouteContext = {
@@ -15,10 +17,14 @@ export async function GET(
   _req: Request,
   context: WorkoutRouteContext
 ) {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
   const { id } = await context.params;
 
-  const workout = await prisma.workout.findUnique({
-    where: { id },
+  const workout = await prisma.workout.findFirst({
+    where: { id, userId },
     include: {
       sets: {
         include: {
@@ -45,6 +51,10 @@ export async function PUT(
   req: Request,
   context: WorkoutRouteContext
 ) {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
   const { id } = await context.params;
   const body = await req.json();
   const parsedWorkout = parseWorkoutPayload(body);
@@ -57,7 +67,7 @@ export async function PUT(
   }
 
   try {
-    await updateWorkout(prisma, id, parsedWorkout.data);
+    await updateWorkout(prisma, userId, id, parsedWorkout.data);
   } catch (error) {
     if (error instanceof InvalidExerciseReferencesError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -75,15 +85,20 @@ export async function DELETE(
   _req: Request,
   context: WorkoutRouteContext
 ) {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
   const { id } = await context.params;
 
-  await prisma.workoutSet.deleteMany({
-    where: { workoutId: id },
-  });
-
-  await prisma.workout.deleteMany({
-    where: { id },
-  });
+  try {
+    await deleteWorkoutRecord(prisma, userId, id);
+  } catch (error) {
+    if (error instanceof WorkoutNotFoundError) {
+      return NextResponse.json({ error: error.message }, { status: 404 });
+    }
+    throw error;
+  }
 
   return NextResponse.json({ success: true });
 }
@@ -92,22 +107,27 @@ export async function POST(
   req: Request,
   context: { params: Promise<{ id: string }> }
 ) {
-  return deleteWorkout(req, context);
+  return deleteWorkoutAndRedirect(req, context);
 }
 
-async function deleteWorkout(
+async function deleteWorkoutAndRedirect(
   req: Request,
   context: WorkoutRouteContext
 ) {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
   const { id } = await context.params;
 
-  await prisma.workoutSet.deleteMany({
-    where: { workoutId: id },
-  });
-
-  await prisma.workout.deleteMany({
-    where: { id },
-  });
+  try {
+    await deleteWorkoutRecord(prisma, userId, id);
+  } catch (error) {
+    if (error instanceof WorkoutNotFoundError) {
+      return NextResponse.json({ error: error.message }, { status: 404 });
+    }
+    throw error;
+  }
 
   return NextResponse.redirect(new URL("/workouts", req.url), 303);
 }

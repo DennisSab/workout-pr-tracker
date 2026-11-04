@@ -3,13 +3,19 @@ import { parseWorkoutPayload } from "@/lib/workout-validation";
 import {
   createWorkout,
   InvalidExerciseReferencesError,
-  WorkoutUserMissingError,
 } from "@/lib/workout-write";
+import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
 
 // ✅ GET ALL WORKOUTS
 export async function GET() {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
   const workouts = await prisma.workout.findMany({
+    where: { userId },
     include: {
       sets: {
         include: {
@@ -26,6 +32,11 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
   const body = await req.json();
   const parsedWorkout = parseWorkoutPayload(body);
 
@@ -38,12 +49,9 @@ export async function POST(req: Request) {
 
   let workout;
   try {
-    workout = await createWorkout(prisma, parsedWorkout.data);
+    workout = await createWorkout(prisma, userId, parsedWorkout.data);
   } catch (error) {
-    if (
-      error instanceof InvalidExerciseReferencesError ||
-      error instanceof WorkoutUserMissingError
-    ) {
+    if (error instanceof InvalidExerciseReferencesError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
     throw error;

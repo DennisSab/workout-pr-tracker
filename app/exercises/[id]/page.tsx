@@ -7,6 +7,7 @@ import {
   groupWorkoutHistory,
 } from "@/lib/exercise-details";
 import { notFound } from "next/navigation";
+import { requirePageUserId } from "@/lib/auth-user";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -21,6 +22,7 @@ export default async function ExercisePage({
   params,
 }: ExercisePageProps) {
   const { id } = await params;
+  const userId = await requirePageUserId();
 
   const exercise = await prisma.exercise.findUnique({
     where: {
@@ -28,6 +30,9 @@ export default async function ExercisePage({
     },
     include: {
       sets: {
+        where: {
+          workout: { userId },
+        },
         include: {
           workout: true,
         },

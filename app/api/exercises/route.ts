@@ -2,11 +2,12 @@ import prisma from "@/lib/prisma";
 import { parseExercisePayload } from "@/lib/workout-validation";
 import { NextResponse } from "next/server";
 import { getAuthenticatedUserId } from "@/lib/auth-user";
+import { unauthorizedResponse } from "@/lib/api-responses";
 
 export async function POST(req: Request) {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
 
   const body = await req.json();
@@ -32,7 +33,7 @@ export async function POST(req: Request) {
 export async function GET() {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
 
   const exercises = await prisma.exercise.findMany({

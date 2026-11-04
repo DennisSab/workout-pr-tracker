@@ -6,27 +6,17 @@ import {
 } from "@/lib/workout-write";
 import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
+import { listUserWorkouts } from "@/lib/workout-read";
+import { unauthorizedResponse } from "@/lib/api-responses";
 
 // ✅ GET ALL WORKOUTS
 export async function GET() {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
 
-  const workouts = await prisma.workout.findMany({
-    where: { userId },
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "desc",
-    },
-  });
+  const workouts = await listUserWorkouts(prisma, userId);
 
   return NextResponse.json(workouts);
 }
@@ -34,7 +24,7 @@ export async function GET() {
 export async function POST(req: Request) {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
 
   const body = await req.json();

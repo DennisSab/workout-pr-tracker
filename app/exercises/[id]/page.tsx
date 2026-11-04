@@ -8,6 +8,7 @@ import {
 } from "@/lib/exercise-details";
 import { notFound } from "next/navigation";
 import { requirePageUserId } from "@/lib/auth-user";
+import { findUserExerciseDetails } from "@/lib/workout-read";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -24,31 +25,7 @@ export default async function ExercisePage({
   const { id } = await params;
   const userId = await requirePageUserId();
 
-  const exercise = await prisma.exercise.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      sets: {
-        where: {
-          workout: { userId },
-        },
-        include: {
-          workout: true,
-        },
-        orderBy: [
-          {
-            workout: {
-              date: "desc",
-            },
-          },
-          {
-            setNumber: "asc",
-          },
-        ],
-      },
-    },
-  });
+  const exercise = await findUserExerciseDetails(prisma, userId, id);
 
   if (!exercise) {
     notFound();

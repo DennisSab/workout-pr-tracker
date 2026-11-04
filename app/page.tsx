@@ -4,6 +4,7 @@ import WorkoutCalendar from "@/components/ui/WorkoutCalendar";
 import prisma from "@/lib/prisma";
 import { getWorkoutCalendarRange } from "@/lib/workout-calendar";
 import { requirePageUserId } from "@/lib/auth-user";
+import { listUserWorkoutDates } from "@/lib/workout-read";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -12,10 +13,12 @@ export default async function Home() {
   const userId = await requirePageUserId();
   const today = new Date();
   const { start, endExclusive } = getWorkoutCalendarRange(today);
-  const workouts = await prisma.workout.findMany({
-    where: { userId, date: { gte: start, lt: endExclusive } },
-    select: { date: true },
-  });
+  const workouts = await listUserWorkoutDates(
+    prisma,
+    userId,
+    start,
+    endExclusive
+  );
 
   return (
     <>

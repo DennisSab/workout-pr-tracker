@@ -3,27 +3,13 @@ import Navbar from "@/components/ui/Navbar";
 import prisma from "@/lib/prisma";
 import ExerciseCard from "@/components/ui/progress/ExerciseCard";
 import { requirePageUserId } from "@/lib/auth-user";
+import { listUserProgressWorkouts } from "@/lib/workout-read";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 async function getWorkouts(userId: string) {
-  return prisma.workout.findMany({
-    where: { userId },
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-        orderBy: {
-          setNumber: "asc",
-        },
-      },
-    },
-    orderBy: {
-      date: "desc",
-    },
-  });
+  return listUserProgressWorkouts(prisma, userId);
 }
 
 export default async function ProgressPage() {

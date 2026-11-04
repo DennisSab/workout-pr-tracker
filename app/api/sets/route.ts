@@ -7,11 +7,15 @@ import {
   InvalidExerciseReferencesError,
   WorkoutNotFoundError,
 } from "@/lib/workout-write";
+import {
+  unauthorizedResponse,
+  workoutNotFoundResponse,
+} from "@/lib/api-responses";
 
 export async function POST(req: Request) {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
 
   const body = await req.json();
@@ -33,7 +37,7 @@ export async function POST(req: Request) {
     return NextResponse.json(set);
   } catch (error) {
     if (error instanceof WorkoutNotFoundError) {
-      return NextResponse.json({ error: error.message }, { status: 404 });
+      return workoutNotFoundResponse(error.message);
     }
     if (error instanceof InvalidExerciseReferencesError) {
       return NextResponse.json({ error: error.message }, { status: 400 });

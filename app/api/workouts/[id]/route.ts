@@ -8,6 +8,11 @@ import {
 } from "@/lib/workout-write";
 import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
+import { findUserWorkout } from "@/lib/workout-read";
+import {
+  unauthorizedResponse,
+  workoutNotFoundResponse,
+} from "@/lib/api-responses";
 
 type WorkoutRouteContext = {
   params: Promise<{ id: string }>;
@@ -19,29 +24,14 @@ export async function GET(
 ) {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
   const { id } = await context.params;
 
-  const workout = await prisma.workout.findFirst({
-    where: { id, userId },
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-        orderBy: {
-          setNumber: "asc",
-        },
-      },
-    },
-  });
+  const workout = await findUserWorkout(prisma, userId, id);
 
   if (!workout) {
-    return NextResponse.json(
-      { error: "Workout not found." },
-      { status: 404 }
-    );
+    return workoutNotFoundResponse();
   }
 
   return NextResponse.json(workout);
@@ -53,7 +43,7 @@ export async function PUT(
 ) {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
   const { id } = await context.params;
   const body = await req.json();
@@ -73,7 +63,7 @@ export async function PUT(
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
     if (error instanceof WorkoutNotFoundError) {
-      return NextResponse.json({ error: error.message }, { status: 404 });
+      return workoutNotFoundResponse(error.message);
     }
     throw error;
   }
@@ -87,7 +77,7 @@ export async function DELETE(
 ) {
   const userId = await getAuthenticatedUserId();
   if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return unauthorizedResponse();
   }
   const { id } = await context.params;
 
@@ -95,39 +85,10 @@ export async function DELETE(
     await deleteWorkoutRecord(prisma, userId, id);
   } catch (error) {
     if (error instanceof WorkoutNotFoundError) {
-      return NextResponse.json({ error: error.message }, { status: 404 });
+      return workoutNotFoundResponse(error.message);
     }
     throw error;
   }
 
   return NextResponse.json({ success: true });
-}
-
-export async function POST(
-  req: Request,
-  context: { params: Promise<{ id: string }> }
-) {
-  return deleteWorkoutAndRedirect(req, context);
-}
-
-async function deleteWorkoutAndRedirect(
-  req: Request,
-  context: WorkoutRouteContext
-) {
-  const userId = await getAuthenticatedUserId();
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
-  const { id } = await context.params;
-
-  try {
-    await deleteWorkoutRecord(prisma, userId, id);
-  } catch (error) {
-    if (error instanceof WorkoutNotFoundError) {
-      return NextResponse.json({ error: error.message }, { status: 404 });
-    }
-    throw error;
-  }
-
-  return NextResponse.redirect(new URL("/workouts", req.url), 303);
 }

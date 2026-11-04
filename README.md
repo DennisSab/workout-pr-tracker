@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+Database setup, environment separation, safety guards, and the backup/restore runbook are documented in [docs/database-environments.md](docs/database-environments.md). Do not run database maintenance before following that guide.
+
 ## Getting Started
 
 First, run the development server:

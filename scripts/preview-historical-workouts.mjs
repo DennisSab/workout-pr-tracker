@@ -71,7 +71,7 @@ async function main() {
   const canonical = JSON.parse(await readFile(new URL("./canonical-exercises.json", import.meta.url), "utf8"));
   const history = JSON.parse(source);
   const validation = validateHistory(history, canonical);
-  nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)));
+  nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)), true);
   assert.ok(process.env.DATABASE_URL, "DATABASE_URL is required.");
   const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, connectionTimeoutMillis: 10000 });
   let inTransaction = false;

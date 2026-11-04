@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/check-development-database.mjs",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs",
+    "db:identify": "node scripts/identify-database.mjs",
+    "db:migrate:dev": "node scripts/run-guarded-prisma.mjs migrate-dev",
+    "db:migrate:deploy:dev": "node scripts/run-guarded-prisma.mjs migrate-deploy",
+    "db:push:dev": "node scripts/run-guarded-prisma.mjs db-push",
+    "db:reset:dev": "node scripts/run-guarded-prisma.mjs db-reset",
+    "db:seed:dev": "node scripts/run-guarded-prisma.mjs seed"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

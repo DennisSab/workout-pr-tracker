@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import nextEnv from "@next/env";
 import pg from "pg";
+import { verifiedPostgresConfig } from "../lib/postgres-tls.mjs";
 import { validateHistory } from "./preview-historical-workouts.mjs";
 import { assertDevelopmentDatabaseTarget } from "./database-safety.mjs";
 
@@ -127,7 +128,7 @@ async function main() {
   nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)), true);
   if (apply) assertDevelopmentDatabaseTarget();
   assert.ok(process.env.DATABASE_URL);
-  const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, connectionTimeoutMillis: 10000 });
+  const client = new pg.Client({ ...verifiedPostgresConfig(process.env.DATABASE_URL), connectionTimeoutMillis: 10000 });
   let inTransaction = false;
   let committed = false;
   let receiptPath;

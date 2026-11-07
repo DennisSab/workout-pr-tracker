@@ -36,13 +36,20 @@ DATABASE_ENV=development
 SUPABASE_PROJECT_REF=the-development-project-ref
 DATABASE_URL=the-development-runtime-pooler-url
 DIRECT_URL=the-development-direct-or-session-pooler-url
+SUPABASE_DB_CA_CERT_PATH=/absolute/path/to/the-dashboard-downloaded-ca.crt
 ```
 
 - Use the transaction pooler URL for the application `DATABASE_URL` when appropriate for the deployed/runtime adapter.
 - Use the direct connection URL for `DIRECT_URL`; if the network cannot reach Supabase's direct IPv6 endpoint, use the session pooler on port 5432.
+- Download the public database CA from Supabase Dashboard > Database Settings >
+  SSL Configuration. Local Prisma CLI commands use
+  `SUPABASE_DB_CA_CERT_PATH`; deployed application runtimes may use the full
+  PEM in `SUPABASE_DB_CA_CERT` instead. Do not add `sslmode` or certificate
+  parameters to the base URLs because node-postgres would replace the verified
+  TLS object.
 - Confirm that both URLs belong to the declared development project. Never copy production rows into development.
 
-Production credentials belong only in Vercel Project Settings > Environment Variables, scoped to **Production**: `DATABASE_ENV=production`, the production `SUPABASE_PROJECT_REF`, `DATABASE_URL`, and `DIRECT_URL`. Preview deployments should get an isolated non-production database, not production credentials. Do not create `.env.production` or `.env.production.local` with production secrets on developer machines.
+Production credentials belong only in Vercel Project Settings > Environment Variables, scoped to **Production**: `DATABASE_ENV=production`, the production `SUPABASE_PROJECT_REF`, `DATABASE_URL`, `DIRECT_URL`, and the complete public CA PEM in `SUPABASE_DB_CA_CERT`. Preview deployments should get an isolated non-production database and its corresponding CA, not production credentials. Do not create `.env.production` or `.env.production.local` with production secrets on developer machines.
 
 ## Read-only identity verification
 

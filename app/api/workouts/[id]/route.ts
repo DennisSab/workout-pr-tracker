@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { readJsonBody } from "@/lib/api-responses";
 import { parseWorkoutPayload } from "@/lib/workout-validation";
 import { NextResponse } from "next/server";
 
@@ -41,7 +42,11 @@ export async function PUT(
   context: WorkoutRouteContext
 ) {
   const { id } = await context.params;
-  const body = await req.json();
+  const result = await readJsonBody(req);
+  if (!result.ok) {
+    return result.response;
+  }
+  const body = result.body;
   const parsedWorkout = parseWorkoutPayload(body);
 
   if (!parsedWorkout.success) {

@@ -161,48 +161,6 @@ export function parseWorkoutPayload(
   };
 }
 
-export function parseExercisePayload(
-  payload: unknown
-): ValidationResult<{ name: string; muscleGroup: string }> {
-  if (!isRecord(payload)) {
-    return {
-      success: false,
-      error: "Invalid exercise payload.",
-      status: 400,
-    };
-  }
-
-  const name = typeof payload.name === "string" ? payload.name.trim() : "";
-  const muscleGroup =
-    typeof payload.muscleGroup === "string"
-      ? payload.muscleGroup.trim()
-      : "";
-
-  if (!name) {
-    return {
-      success: false,
-      error: "Exercise name is required.",
-      status: 400,
-    };
-  }
-
-  if (!muscleGroup) {
-    return {
-      success: false,
-      error: "Muscle group is required.",
-      status: 400,
-    };
-  }
-
-  return {
-    success: true,
-    data: {
-      name,
-      muscleGroup,
-    },
-  };
-}
-
 export function buildWorkoutFormValues(input: {
   date: Date;
   notes: string | null;

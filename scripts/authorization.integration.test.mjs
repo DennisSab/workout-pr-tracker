@@ -303,6 +303,39 @@ test("the workout item route exposes no legacy destructive POST handler", async 
   assert.match(source, /export async function DELETE\s*\(/);
 });
 
+test("the shared exercise catalog route is read-only and requires a session", async () => {
+  const source = await readFile(
+    new URL("../app/api/exercises/route.ts", import.meta.url),
+    "utf8"
+  );
+  for (const method of ["POST", "PUT", "PATCH", "DELETE"]) {
+    assert.doesNotMatch(
+      source,
+      new RegExp(`export\\s+(async\\s+)?(function|const)\\s+${method}\\b`),
+      `${method} must not be exported from the exercise catalog route`
+    );
+  }
+  assert.match(source, /export async function GET\s*\(/);
+  assert.match(source, /if \(!userId\) \{\s*return unauthorizedResponse\(\);/);
+});
+
+test("no application code can write to the shared exercise catalog", async () => {
+  const { readdir } = await import("node:fs/promises");
+  const writes = /\.exercise\.(create|createMany|createManyAndReturn|upsert|update|updateMany|delete|deleteMany)\s*\(/;
+  const offenders = [];
+
+  for (const dir of ["app", "components", "lib"]) {
+    const root = new URL(`../${dir}/`, import.meta.url);
+    for (const entry of await readdir(root, { recursive: true })) {
+      if (!/\.(ts|tsx|mjs|js)$/.test(entry)) continue;
+      const source = await readFile(new URL(entry, root), "utf8");
+      if (writes.test(source)) offenders.push(`${dir}/${entry}`);
+    }
+  }
+
+  assert.deepEqual(offenders, [], "catalog writes belong in scripts/sync-exercise-catalog.mjs");
+});
+
 test("dashboard, history, calendar, progress, and exercise details isolate users", async () => {
   const client = isolatedClient();
   const start = new Date(2026, 10, 1);

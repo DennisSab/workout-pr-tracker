@@ -13,6 +13,7 @@ import {
   unauthorizedResponse,
   workoutNotFoundResponse,
 } from "@/lib/api-responses";
+import { rejectCrossOriginRequest } from "@/lib/request-origin";
 
 type WorkoutRouteContext = {
   params: Promise<{ id: string }>;
@@ -41,6 +42,11 @@ export async function PUT(
   req: Request,
   context: WorkoutRouteContext
 ) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
   const userId = await getAuthenticatedUserId();
   if (!userId) {
     return unauthorizedResponse();
@@ -72,9 +78,14 @@ export async function PUT(
 }
 
 export async function DELETE(
-  _req: Request,
+  req: Request,
   context: WorkoutRouteContext
 ) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
   const userId = await getAuthenticatedUserId();
   if (!userId) {
     return unauthorizedResponse();

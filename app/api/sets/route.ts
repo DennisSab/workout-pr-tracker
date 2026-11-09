@@ -11,8 +11,14 @@ import {
   unauthorizedResponse,
   workoutNotFoundResponse,
 } from "@/lib/api-responses";
+import { rejectCrossOriginRequest } from "@/lib/request-origin";
 
 export async function POST(req: Request) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
   const userId = await getAuthenticatedUserId();
   if (!userId) {
     return unauthorizedResponse();

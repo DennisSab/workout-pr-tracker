@@ -8,6 +8,7 @@ import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
 import { listUserWorkouts } from "@/lib/workout-read";
 import { unauthorizedResponse } from "@/lib/api-responses";
+import { rejectCrossOriginRequest } from "@/lib/request-origin";
 
 // ✅ GET ALL WORKOUTS
 export async function GET() {
@@ -22,6 +23,11 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
   const userId = await getAuthenticatedUserId();
   if (!userId) {
     return unauthorizedResponse();

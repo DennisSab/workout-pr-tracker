@@ -3,6 +3,7 @@ import WorkoutForm from "@/components/ui/workouts/WorkoutForm";
 import prisma from "@/lib/prisma";
 import { buildWorkoutFormValues } from "@/lib/workout-validation";
 import { notFound } from "next/navigation";
+import { requirePageUserId } from "@/lib/auth-user";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -17,6 +18,7 @@ export default async function EditWorkoutPage({
   params,
 }: EditWorkoutPageProps) {
   const { id } = await params;
+  const userId = await requirePageUserId();
 
   const [exercises, workout] = await Promise.all([
     prisma.exercise.findMany({
@@ -24,9 +26,10 @@ export default async function EditWorkoutPage({
         name: "asc",
       },
     }),
-    prisma.workout.findUnique({
+    prisma.workout.findFirst({
       where: {
         id,
+        userId,
       },
       include: {
         sets: {

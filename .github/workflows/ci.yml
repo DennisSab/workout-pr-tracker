@@ -1,0 +1,73 @@
+name: CI
+
+# Runs on every PR into main or the V2 branch, and on pushes to them.
+# CI only: deployment stays with Vercel (main) for now.
+on:
+  pull_request:
+    branches: [main, feat/workoutpr-v2-foundation]
+  push:
+    branches: [main, feat/workoutpr-v2-foundation]
+
+# Least privilege: the job only needs to read the code.
+permissions:
+  contents: read
+
+# A newer push to the same PR/branch cancels the older, now-stale run.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Lint, typecheck, test, build, audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    # Placeholder config, no secrets. Nothing in CI connects to a database:
+    # prisma generate and next build only need syntactically valid values.
+    env:
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
+      SUPABASE_DB_CA_CERT_PATH: ${{ github.workspace }}/../ci-placeholder-ca.crt
+      AUTH_SECRET: ci-placeholder-not-a-secret
+
+    steps:
+      # Actions pinned to full commit SHAs so a moved tag can't change what runs.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Importing the Prisma client runs the verified-TLS guard, which needs a
+      # valid PEM CA cert. This throwaway self-signed one trusts nothing real.
+      - name: Create throwaway CA certificate
+        run: |
+          openssl req -x509 -newkey rsa:2048 -nodes -keyout /dev/null \
+            -subj "/CN=ci-placeholder-ca" -days 1 \
+            -out "$SUPABASE_DB_CA_CERT_PATH"
+
+      # The Prisma client is generated code; lint/typecheck need it to exist.
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      # Fails only on high/critical advisories; moderate ones are reviewed by hand.
+      - name: Audit dependencies
+        run: npm audit --audit-level=high

@@ -1,4 +1,8 @@
+[![CI](https://github.com/DennisSab/workout-pr-tracker/actions/workflows/ci.yml/badge.svg?branch=feat%2Fworkoutpr-v2-foundation)](https://github.com/DennisSab/workout-pr-tracker/actions/workflows/ci.yml)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+Database setup, environment separation, safety guards, and the backup/restore runbook are documented in [docs/database-environments.md](docs/database-environments.md). Do not run database maintenance before following that guide.
 
 ## Getting Started
 

@@ -1,16 +1,9 @@
-"use client";
-
+import { auth, signOut } from "@/auth";
+import NavigationLinks from "@/components/ui/NavigationLinks";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const navigationLinks = [
-  { href: "/", label: "Dashboard" },
-  { href: "/workouts", label: "Workouts" },
-  { href: "/progress", label: "Progress" },
-];
-
-export default function Navbar() {
-  const pathname = usePathname();
+export default async function Navbar() {
+  const session = await auth();
 
   return (
     <header className="border-b border-gray-800 bg-gray-950 px-6 py-4">
@@ -19,28 +12,28 @@ export default function Navbar() {
           Workout PR Tracker
         </Link>
 
-        <nav className="flex flex-wrap gap-2">
-          {navigationLinks.map((link) => {
-            const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
+        <NavigationLinks />
 
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                  isActive
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-900 text-gray-300 hover:bg-gray-800 hover:text-white"
-                }`}
+        {session?.user ? (
+          <div className="flex items-center gap-3 text-sm">
+            <span className="max-w-48 truncate text-gray-300">
+              {session.user.name ?? session.user.email ?? "Signed in"}
+            </span>
+            <form
+              action={async () => {
+                "use server";
+                await signOut({ redirectTo: "/login" });
+              }}
+            >
+              <button
+                type="submit"
+                className="rounded-lg border border-gray-700 px-3 py-2 font-medium text-gray-200 transition hover:bg-gray-800"
               >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+                Sign out
+              </button>
+            </form>
+          </div>
+        ) : null}
       </div>
     </header>
   );

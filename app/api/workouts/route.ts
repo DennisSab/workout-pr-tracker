@@ -1,26 +1,38 @@
 import prisma from "@/lib/prisma";
 import { parseWorkoutPayload } from "@/lib/workout-validation";
+import {
+  createWorkout,
+  InvalidExerciseReferencesError,
+} from "@/lib/workout-write";
+import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
+import { listUserWorkouts } from "@/lib/workout-read";
+import { unauthorizedResponse } from "@/lib/api-responses";
+import { rejectCrossOriginRequest } from "@/lib/request-origin";
 
 // ✅ GET ALL WORKOUTS
 export async function GET() {
-  const workouts = await prisma.workout.findMany({
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "desc",
-    },
-  });
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return unauthorizedResponse();
+  }
+
+  const workouts = await listUserWorkouts(prisma, userId);
 
   return NextResponse.json(workouts);
 }
 
 export async function POST(req: Request) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return unauthorizedResponse();
+  }
+
   const body = await req.json();
   const parsedWorkout = parseWorkoutPayload(body);
 
@@ -31,29 +43,15 @@ export async function POST(req: Request) {
     );
   }
 
-  const user = await prisma.user.findFirst();
-
-  if (!user) {
-    return NextResponse.json({ error: "No user found" }, { status: 400 });
+  let workout;
+  try {
+    workout = await createWorkout(prisma, userId, parsedWorkout.data);
+  } catch (error) {
+    if (error instanceof InvalidExerciseReferencesError) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+    throw error;
   }
-
-  const workout = await prisma.workout.create({
-    data: {
-      userId: user.id,
-      notes: parsedWorkout.data.notes,
-      date: parsedWorkout.data.date,
-    },
-  });
-
-  await prisma.workoutSet.createMany({
-    data: parsedWorkout.data.sets.map((set) => ({
-      workoutId: workout.id,
-      exerciseId: set.exerciseId,
-      setNumber: set.setNumber,
-      reps: set.reps,
-      weight: set.weight,
-    })),
-  });
 
   return NextResponse.json({ success: true, workoutId: workout.id });
 }

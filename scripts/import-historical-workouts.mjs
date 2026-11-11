@@ -7,7 +7,9 @@ import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import nextEnv from "@next/env";
 import pg from "pg";
+import { verifiedPostgresConfig } from "../lib/postgres-tls.mjs";
 import { validateHistory } from "./preview-historical-workouts.mjs";
+import { assertDevelopmentDatabaseTarget } from "./database-safety.mjs";
 
 const approvedSourceHash = "17c00aa6416348fd5916019af60758b18cbeee6220df2cf0b9a692a6537e1238";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
@@ -123,9 +125,10 @@ async function main() {
   const previewSource = await readFile(new URL("./historical-workouts.preview.json", import.meta.url), "utf8");
   const preview = JSON.parse(previewSource);
   const { validation, ids } = validateApprovedInput(source, canonical, preview);
-  nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)));
+  nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)), true);
+  if (apply) assertDevelopmentDatabaseTarget();
   assert.ok(process.env.DATABASE_URL);
-  const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, connectionTimeoutMillis: 10000 });
+  const client = new pg.Client({ ...verifiedPostgresConfig(process.env.DATABASE_URL), connectionTimeoutMillis: 10000 });
   let inTransaction = false;
   let committed = false;
   let receiptPath;

@@ -91,9 +91,13 @@ export function parseWorkoutPayload(
 
   const sets: WorkoutSetInput[] = [];
 
-  for (const exercise of rawExercises) {
+  for (const [exerciseIndex, exercise] of rawExercises.entries()) {
     if (!isRecord(exercise)) {
-      continue;
+      return {
+        success: false,
+        error: `Exercise ${exerciseIndex + 1} is malformed.`,
+        status: 400,
+      };
     }
 
     const exerciseId =
@@ -102,19 +106,31 @@ export function parseWorkoutPayload(
         : "";
 
     if (!exerciseId || !Array.isArray(exercise.sets)) {
-      continue;
+      return {
+        success: false,
+        error: `Exercise ${exerciseIndex + 1} requires an exercise ID and a sets array.`,
+        status: 400,
+      };
+    }
+
+    if (exercise.sets.length === 0) {
+      return {
+        success: false,
+        error: `Exercise ${exerciseIndex + 1} requires at least one set.`,
+        status: 400,
+      };
     }
 
     let setNumber = 1;
 
-    for (const set of exercise.sets) {
-      if (!isRecord(set)) {
-        continue;
-      }
-
+    for (const [setIndex, set] of exercise.sets.entries()) {
       const values = parseSetValues(set);
       if (!values) {
-        continue;
+        return {
+          success: false,
+          error: `Exercise ${exerciseIndex + 1}, set ${setIndex + 1} requires positive whole-number reps and either a positive weight or explicit null for bodyweight.`,
+          status: 400,
+        };
       }
 
       sets.push({
@@ -141,48 +157,6 @@ export function parseWorkoutPayload(
       date: parsedDate,
       notes,
       sets,
-    },
-  };
-}
-
-export function parseExercisePayload(
-  payload: unknown
-): ValidationResult<{ name: string; muscleGroup: string }> {
-  if (!isRecord(payload)) {
-    return {
-      success: false,
-      error: "Invalid exercise payload.",
-      status: 400,
-    };
-  }
-
-  const name = typeof payload.name === "string" ? payload.name.trim() : "";
-  const muscleGroup =
-    typeof payload.muscleGroup === "string"
-      ? payload.muscleGroup.trim()
-      : "";
-
-  if (!name) {
-    return {
-      success: false,
-      error: "Exercise name is required.",
-      status: 400,
-    };
-  }
-
-  if (!muscleGroup) {
-    return {
-      success: false,
-      error: "Muscle group is required.",
-      status: 400,
-    };
-  }
-
-  return {
-    success: true,
-    data: {
-      name,
-      muscleGroup,
     },
   };
 }

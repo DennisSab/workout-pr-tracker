@@ -2,30 +2,19 @@ import { buildProgressStats } from "@/lib/workout-progress";
 import Navbar from "@/components/ui/Navbar";
 import prisma from "@/lib/prisma";
 import ExerciseCard from "@/components/ui/progress/ExerciseCard";
+import { requirePageUserId } from "@/lib/auth-user";
+import { listUserProgressWorkouts } from "@/lib/workout-read";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-async function getWorkouts() {
-  return prisma.workout.findMany({
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-        orderBy: {
-          setNumber: "asc",
-        },
-      },
-    },
-    orderBy: {
-      date: "desc",
-    },
-  });
+async function getWorkouts(userId: string) {
+  return listUserProgressWorkouts(prisma, userId);
 }
 
 export default async function ProgressPage() {
-  const workouts = await getWorkouts();
+  const userId = await requirePageUserId();
+  const workouts = await getWorkouts(userId);
   const exerciseStats = buildProgressStats(workouts);
 
   return (

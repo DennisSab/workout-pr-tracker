@@ -1,14 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { verifiedPostgresConfig } from "@/lib/postgres-tls.mjs";
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ...verifiedPostgresConfig(process.env.DATABASE_URL),
   max: 1,
-  // ✅ THIS IS THE KEY FIX:
   allowExitOnIdle: true,
 });
 

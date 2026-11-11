@@ -5,6 +5,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import nextEnv from "@next/env";
 import pg from "pg";
+import { verifiedPostgresConfig } from "../lib/postgres-tls.mjs";
 
 export function validateHistory(history, canonical) {
   assert.equal(history.version, 1);
@@ -71,9 +72,9 @@ async function main() {
   const canonical = JSON.parse(await readFile(new URL("./canonical-exercises.json", import.meta.url), "utf8"));
   const history = JSON.parse(source);
   const validation = validateHistory(history, canonical);
-  nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)));
+  nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)), true);
   assert.ok(process.env.DATABASE_URL, "DATABASE_URL is required.");
-  const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, connectionTimeoutMillis: 10000 });
+  const client = new pg.Client({ ...verifiedPostgresConfig(process.env.DATABASE_URL), connectionTimeoutMillis: 10000 });
   let inTransaction = false;
   try {
     await client.connect();

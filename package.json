@@ -3,17 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/check-development-database.mjs",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs",
+    "db:identify": "node scripts/identify-database.mjs",
+    "db:migrate:dev": "node scripts/run-guarded-prisma.mjs migrate-dev",
+    "db:migrate:deploy:dev": "node scripts/run-guarded-prisma.mjs migrate-deploy",
+    "db:push:dev": "node scripts/run-guarded-prisma.mjs db-push",
+    "db:reset:dev": "node scripts/run-guarded-prisma.mjs db-reset",
+    "db:seed:dev": "node scripts/run-guarded-prisma.mjs seed"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
-    "next": "16.2.7",
+    "@auth/prisma-adapter": "2.11.3",
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "next": "16.4.5",
+    "next-auth": "5.0.0-beta.32",
     "pg": "^8.21.0",
-    "prisma": "^7.8.0",
+    "prisma": "7.10.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -24,7 +34,7 @@
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.7",
+    "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

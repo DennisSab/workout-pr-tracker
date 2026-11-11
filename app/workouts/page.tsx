@@ -3,32 +3,21 @@ import WorkoutHistoryCard from "@/components/ui/workouts/WorkoutHistoryCard";
 import prisma from "@/lib/prisma";
 import { buildWorkoutHistory } from "@/lib/workout-history";
 import Link from "next/link";
+import { requirePageUserId } from "@/lib/auth-user";
+import { listUserWorkouts } from "@/lib/workout-read";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-async function getWorkoutHistory() {
-  const workouts = await prisma.workout.findMany({
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-        orderBy: {
-          setNumber: "asc",
-        },
-      },
-    },
-    orderBy: {
-      date: "desc",
-    },
-  });
+async function getWorkoutHistory(userId: string) {
+  const workouts = await listUserWorkouts(prisma, userId);
 
   return buildWorkoutHistory(workouts);
 }
 
 export default async function WorkoutsPage() {
-  const workouts = await getWorkoutHistory();
+  const userId = await requirePageUserId();
+  const workouts = await getWorkoutHistory(userId);
 
   return (
     <>

@@ -1,6 +1,7 @@
 import Navbar from "@/components/ui/Navbar";
 import WorkoutForm from "@/components/ui/workouts/WorkoutForm";
 import prisma from "@/lib/prisma";
+import { requirePageUserId } from "@/lib/auth-user";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -14,6 +15,7 @@ async function getExercises() {
 }
 
 export default async function NewWorkoutPage() {
+  await requirePageUserId();
   const exercises = await getExercises();
 
   return (
@@ -23,7 +25,7 @@ export default async function NewWorkoutPage() {
         mode="create"
         exercises={exercises}
         initialValues={{
-          date: new Date().toISOString().split("T")[0],
+          date: "",
           notes: "",
           exercises: [{ exerciseId: "", sets: [{ weight: "", reps: "" }] }],
         }}

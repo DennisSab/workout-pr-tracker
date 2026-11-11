@@ -7,6 +7,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import nextEnv from "@next/env";
 import pg from "pg";
+import { verifiedPostgresConfig } from "../lib/postgres-tls.mjs";
+import { assertDevelopmentDatabaseTarget } from "./database-safety.mjs";
 
 const args = process.argv.slice(2);
 const apply = args.includes("--apply");
@@ -26,11 +28,11 @@ if (!Array.isArray(canonical) || canonical.length !== 31 ||
   throw new Error("Canonical catalog must contain exactly 31 unique names and valid muscle groups.");
 }
 
-nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)));
+nextEnv.loadEnvConfig(fileURLToPath(new URL("../", import.meta.url)), true);
 if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required.");
+if (apply) assertDevelopmentDatabaseTarget();
 const client = new pg.Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }, // Match the application's database connection.
+  ...verifiedPostgresConfig(process.env.DATABASE_URL),
   connectionTimeoutMillis: 10000,
 });
 let inTransaction = false;

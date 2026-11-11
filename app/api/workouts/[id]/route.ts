@@ -1,6 +1,19 @@
 import prisma from "@/lib/prisma";
 import { parseWorkoutPayload } from "@/lib/workout-validation";
+import {
+  deleteWorkout as deleteWorkoutRecord,
+  InvalidExerciseReferencesError,
+  updateWorkout,
+  WorkoutNotFoundError,
+} from "@/lib/workout-write";
+import { getAuthenticatedUserId } from "@/lib/auth-user";
 import { NextResponse } from "next/server";
+import { findUserWorkout } from "@/lib/workout-read";
+import {
+  unauthorizedResponse,
+  workoutNotFoundResponse,
+} from "@/lib/api-responses";
+import { rejectCrossOriginRequest } from "@/lib/request-origin";
 
 type WorkoutRouteContext = {
   params: Promise<{ id: string }>;
@@ -10,27 +23,16 @@ export async function GET(
   _req: Request,
   context: WorkoutRouteContext
 ) {
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return unauthorizedResponse();
+  }
   const { id } = await context.params;
 
-  const workout = await prisma.workout.findUnique({
-    where: { id },
-    include: {
-      sets: {
-        include: {
-          exercise: true,
-        },
-        orderBy: {
-          setNumber: "asc",
-        },
-      },
-    },
-  });
+  const workout = await findUserWorkout(prisma, userId, id);
 
   if (!workout) {
-    return NextResponse.json(
-      { error: "Workout not found." },
-      { status: 404 }
-    );
+    return workoutNotFoundResponse();
   }
 
   return NextResponse.json(workout);
@@ -40,6 +42,15 @@ export async function PUT(
   req: Request,
   context: WorkoutRouteContext
 ) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return unauthorizedResponse();
+  }
   const { id } = await context.params;
   const body = await req.json();
   const parsedWorkout = parseWorkoutPayload(body);
@@ -51,80 +62,44 @@ export async function PUT(
     );
   }
 
-  const existingWorkout = await prisma.workout.findUnique({
-    where: { id },
-    select: { id: true },
-  });
-
-  if (!existingWorkout) {
-    return NextResponse.json(
-      { error: "Workout not found." },
-      { status: 404 }
-    );
+  try {
+    await updateWorkout(prisma, userId, id, parsedWorkout.data);
+  } catch (error) {
+    if (error instanceof InvalidExerciseReferencesError) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+    if (error instanceof WorkoutNotFoundError) {
+      return workoutNotFoundResponse(error.message);
+    }
+    throw error;
   }
-
-  await prisma.workout.update({
-    where: { id },
-    data: {
-      date: parsedWorkout.data.date,
-      notes: parsedWorkout.data.notes,
-    },
-  });
-
-  await prisma.workoutSet.deleteMany({
-    where: { workoutId: id },
-  });
-
-  await prisma.workoutSet.createMany({
-    data: parsedWorkout.data.sets.map((set) => ({
-      workoutId: id,
-      exerciseId: set.exerciseId,
-      setNumber: set.setNumber,
-      reps: set.reps,
-      weight: set.weight,
-    })),
-  });
 
   return NextResponse.json({ success: true, workoutId: id });
 }
 
 export async function DELETE(
-  _req: Request,
+  req: Request,
   context: WorkoutRouteContext
 ) {
+  const crossOrigin = rejectCrossOriginRequest(req);
+  if (crossOrigin) {
+    return crossOrigin;
+  }
+
+  const userId = await getAuthenticatedUserId();
+  if (!userId) {
+    return unauthorizedResponse();
+  }
   const { id } = await context.params;
 
-  await prisma.workoutSet.deleteMany({
-    where: { workoutId: id },
-  });
-
-  await prisma.workout.deleteMany({
-    where: { id },
-  });
+  try {
+    await deleteWorkoutRecord(prisma, userId, id);
+  } catch (error) {
+    if (error instanceof WorkoutNotFoundError) {
+      return workoutNotFoundResponse(error.message);
+    }
+    throw error;
+  }
 
   return NextResponse.json({ success: true });
-}
-
-export async function POST(
-  req: Request,
-  context: { params: Promise<{ id: string }> }
-) {
-  return deleteWorkout(req, context);
-}
-
-async function deleteWorkout(
-  req: Request,
-  context: WorkoutRouteContext
-) {
-  const { id } = await context.params;
-
-  await prisma.workoutSet.deleteMany({
-    where: { workoutId: id },
-  });
-
-  await prisma.workout.deleteMany({
-    where: { id },
-  });
-
-  return NextResponse.redirect(new URL("/workouts", req.url), 303);
 }
